@@ -4,16 +4,24 @@ class LeechDeepFryer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isDeepFrying: false,
             buttonStyle: "btn-primary",
             message: "Deep fryer ready for leeches",
         };
 
-        this.startDeepFry = this.startDeepFry.bind(this);
+        this.initDeepFry = this.initDeepFry.bind(this);
     }
+
+    initDeepFry() {
+        if (!this.state.isDeepFrying) {
+            this.startDeepFry();
+        }
+    };
 
     startDeepFry = () => {
 
         this.setState({
+            isDeepFrying: true,
             buttonStyle: "btn-secondary",
             message: "Deep frying in progress...",
         });
@@ -27,6 +35,7 @@ class LeechDeepFryer extends Component {
 
     completeDeepFry() {
         this.setState({
+            isDeepFrying: false,
             buttonStyle: "btn-primary",
             message: "Deep frying complete. Enjoy your deep fried leech!"
         });
@@ -41,7 +50,7 @@ class LeechDeepFryer extends Component {
                     <div className="col">
                         <h1>Leech Factory</h1>
                         <p className="mt-5">{this.state.message}</p>
-                        <button type="button" className={"btn " + this.state.buttonStyle} onClick={this.startDeepFry}>Deep Fry</button>
+                        <button type="button" className={"btn " + this.state.buttonStyle} onClick={this.initDeepFry}>Deep Fry</button>
                     </div>
                 </div>
             </div>
