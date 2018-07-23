@@ -33,6 +33,7 @@ class App extends Component {
         </div>
         <div id="Charlie" className="tabcontent">
           <h1> Charlie </h1>
+          <Snake />
         </div>
       </div>
     );
