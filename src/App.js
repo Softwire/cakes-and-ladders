@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
+import Dynamite from "./Dynamite.js";
+import Game from "./snekboard.js";
+import Board from "./snekboard.js";
+import Square from "./snekboard.js";
 
 class App extends Component {
   render() {
@@ -20,7 +24,11 @@ class App extends Component {
           <RobinsElement />
         </div>
         <div id="Joel" className="tabcontent">
-          <h1> Joel </h1>  
+          <h1> Joel </h1>
+            <div className="App">
+              <h1 className="App-title">Welcome to Snek</h1>
+                <Game/>
+            </div>
         </div>
         <div id="Eric" className="tabcontent">
           <h1> Eric </h1>
