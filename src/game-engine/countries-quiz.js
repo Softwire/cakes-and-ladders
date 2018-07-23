@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Flag} from './quiz-unit';
 
 class CountriesQuiz extends Component {
     constructor(props) {
@@ -20,23 +21,30 @@ class CountriesQuiz extends Component {
             });
     }
 
+    renderFlag(flagUrl) {
+        return (
+            <Flag
+                value={flagUrl}
+            />
+        )
+    }
+
     render() {
 
-        let message = this.state.appIsReady ? this.state.countries.length: "Loading...";
-
-        return (
-            <div className="container">
-                <div className="row mt-5">
-                    <div className="col">
-                        <h1>Countries Quiz</h1>
-                        <p className="mt-5">{message}</p>
-                        <button type="button" className={"btn " + this.state.buttonStyle}
-                                onClick={this.componentDidMount}>Fetch
-                        </button>
+        if (this.state.appIsReady) {
+            return (
+                <div className="container">
+                    <div className="row mt-5">
+                        <div className="col">
+                            <h1>Countries Quiz</h1>
+                            {this.renderFlag(this.state.countries[0].flag)}
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else
+            return (<p>Loading</p>);
     }
 }
 
