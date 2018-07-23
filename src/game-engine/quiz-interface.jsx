@@ -8,7 +8,7 @@ function Flag(props) {
 
 function OptionButton(props) {
     return (
-        <button type="button" className="col btn btn-primary m-2 option-button">{props.value}</button>
+        <button type="button" className="col btn btn-primary m-2 p-4 flex-0 option-button">{props.value}</button>
     );
 }
 
