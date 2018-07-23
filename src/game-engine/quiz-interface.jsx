@@ -8,31 +8,33 @@ function Flag(props) {
     );
 }
 
-function OptionButton(props) {
+class OptionButton extends Component {
 
-    let buttonStyle = getButtonStyle(props.value.buttonState);
+    render() {
+        let buttonStyle = OptionButton.getButtonStyle(this.props.value.buttonState);
 
-    return (
-        <button
-            type="button"
-            className={"col btn m-2 p-4 flex-0 option-button " + buttonStyle}
-            key={props.value.alpha3Code}
-            onClick={props.handleClick}>
-            {props.value.name}
-        </button>
-    );
-}
+        return (
+            <button
+                type="button"
+                className={"col btn m-2 p-4 flex-0 option-button " + buttonStyle}
+                key={this.props.value.alpha3Code}
+                onClick={this.props.handleClick}>
+                {this.props.value.name}
+            </button>
+        );
+    }
 
-function getButtonStyle(state) {
-    switch (state) {
-        case buttonState.UNSELECTED:
-            return "btn-primary";
-        case buttonState.WRONG:
-            return "btn-secondary";
-        case buttonState.CORRECT:
-            return "btn-success";
-        case buttonState.SELECTED:
-            return "btn-danger";
+    static getButtonStyle(state) {
+        switch (state) {
+            case buttonState.UNSELECTED:
+                return "btn-primary";
+            case buttonState.WRONG:
+                return "btn-secondary";
+            case buttonState.CORRECT:
+                return "btn-success";
+            case buttonState.SELECTED:
+                return "btn-danger";
+        }
     }
 }
 
