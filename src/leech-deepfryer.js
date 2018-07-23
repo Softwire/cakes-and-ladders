@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class LeechDeepfryer extends Component {
+class LeechDeepFryer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: "Deep fryer ready for leeches"
+        };
+
+        this.StartDeepFry = this.StartDeepFry.bind(this);
+    }
+
+    StartDeepFry=()=>{
+
+        this.setState( {
+            message: "Deep frying in progress..."
+        });
+        setTimeout( () => {
+
+            this.setState( {
+                message: "Deep frying complete. Enjoy your deep fried leech!"
+            });
+
+            alert("Complete!")
+
+        }, 3000);
+
+
+    };
+
     render() {
         return (
-            <buttton className="Leech-Deep-Fryer">
-                DEEP FRY
-            </buttton>
+            <div className="main-container">
+                <p>{this.state.message}</p>
+                <button onClick={this.StartDeepFry}>DEEP FRY</button>
+            </div>
         );
     }
 }
 
-export default LeechDeepfryer;
+export default LeechDeepFryer;
