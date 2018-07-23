@@ -26,6 +26,7 @@ class RobinsElement extends React.Component {
     this.state = {
       gameRunning: true,
       completedRounds: 0,
+      timeAllowed: 5,
       leftButtonValue: 50,
       rightButtonValue: 50
     };
@@ -57,7 +58,9 @@ class RobinsElement extends React.Component {
       const min = 1;
       const max = 100;
       const randLeft = Math.round(min + Math.random() * (max - min));
-      const randRight = Math.round(min + Math.random() * (max - min));
+      var randRight = Math.round(min + Math.random() * (max - min));
+      while(randRight == randLeft)
+        randRight = Math.round(min + Math.random() * (max - min));
       this.updateRounds();
       this.updateButtonValue('left', randLeft);
       this.updateButtonValue('right', randRight);
@@ -80,12 +83,28 @@ class RobinsElement extends React.Component {
         type = 'right'
         value = {this.state.rightButtonValue}
         />
+        <this.startClock
+        countdownFrom = {2}
+        completedRounds = {this.state.completedRounds}
+        gameEnded = {this.gameEnded}
+        />
       </div>
       );
 
     return(
         <p> GAME OVER. You reached round {this.state.completedRounds}! </p>
     );
+  }
+
+  startClock(props) {
+    console.log(props.completedRounds)
+    if(props.completedRounds >0)
+      return <Clock 
+      countdownFrom={props.countdownFrom}
+      gameEnded = {props.gameEnded}
+       />;
+    else
+      return null;
   }
 
 
@@ -113,13 +132,39 @@ class Button extends React.Component {
   }
 
   handleClick() {
-    console.log(this)
     this.props.buttonClicked(this.props.type)
   }
 
   render() {
     return (
         <button onClick={this.handleClick.bind(this)}>{this.props.value}</button>
+    );
+  }
+}
+
+class Clock extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {currentCount: props.countdownFrom}
+  }
+  timer() {
+    this.setState({
+      currentCount: this.state.currentCount - 1
+    })
+    if(this.state.currentCount < 1) { 
+      clearInterval(this.intervalId)
+      this.props.gameEnded()
+    }
+  }
+  componentDidMount() {
+    this.intervalId = setInterval(this.timer.bind(this), 1000);
+  }
+  componentWillUnmount(){
+    clearInterval(this.intervalId);
+  }
+  render() {
+    return(
+      <div>Time remaining:{this.state.currentCount}</div>
     );
   }
 }
