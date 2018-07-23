@@ -4,29 +4,35 @@ class LeechDeepFryer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: "Deep fryer ready for leeches"
+            buttonStyle: "btn-primary",
+            message: "Deep fryer ready for leeches",
         };
 
-        this.StartDeepFry = this.StartDeepFry.bind(this);
+        this.startDeepFry = this.startDeepFry.bind(this);
     }
 
-    StartDeepFry = () => {
+    startDeepFry = () => {
 
         this.setState({
-            message: "Deep frying in progress..."
+            buttonStyle: "btn-secondary",
+            message: "Deep frying in progress...",
         });
         setTimeout(() => {
-
-            this.setState({
-                message: "Deep frying complete. Enjoy your deep fried leech!"
-            });
-
-            alert("Complete!")
+            this.completeDeepFry();
 
         }, 3000);
 
 
     };
+
+    completeDeepFry() {
+        this.setState({
+            buttonStyle: "btn-primary",
+            message: "Deep frying complete. Enjoy your deep fried leech!"
+        });
+
+        alert("Complete!")
+    }
 
     render() {
         return (
@@ -35,7 +41,7 @@ class LeechDeepFryer extends Component {
                     <div className="col">
                         <h1>Leech Factory</h1>
                         <p>{this.state.message}</p>
-                        <button type="button" className="btn btn-primary" onClick={this.StartDeepFry}>Deep Fry</button>
+                        <button type="button" className={"btn " + this.state.buttonStyle} onClick={this.startDeepFry}>Deep Fry</button>
                     </div>
                 </div>
             </div>
