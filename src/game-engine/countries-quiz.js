@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Flag} from './quiz-unit';
+import QuizInterface from "./quiz-interface";
 
 class CountriesQuiz extends Component {
     constructor(props) {
@@ -21,14 +21,6 @@ class CountriesQuiz extends Component {
             });
     }
 
-    renderFlag(flagUrl) {
-        return (
-            <Flag
-                value={flagUrl}
-            />
-        )
-    }
-
     render() {
 
         if (this.state.appIsReady) {
@@ -37,7 +29,9 @@ class CountriesQuiz extends Component {
                     <div className="row mt-5">
                         <div className="col">
                             <h1>Countries Quiz</h1>
-                            {this.renderFlag(this.state.countries[0].flag)}
+                            <QuizInterface
+                                countries = {this.state.countries}
+                            />
                         </div>
                     </div>
                 </div>
