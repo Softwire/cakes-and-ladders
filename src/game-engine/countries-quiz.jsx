@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import '../css/countries-quiz.css';
 import QuizInterface from "./quiz-interface.jsx";
 
+const optionCount = 4;
+const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
+
 class CountriesQuiz extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             allCountries: null,
             answerOptions: null,
             answerIndex: -1,
-            isShowingAnswer: false,
+            isLoadingNewQuestion: false,
         };
 
         this.selectOption = this.selectOption.bind(this);
@@ -47,21 +51,34 @@ class CountriesQuiz extends Component {
     }
 
     loadNewQuestion() {
-        let answerOptions = this.getNRandomCountries(4);
-        let answerIndex = Math.floor(Math.random() * answerOptions.length);
+        let answerOptions = this.getNRandomCountries(optionCount).map(country => {
+            country.buttonState = buttonState.UNSELECTED;
+            return country;
+        });
+        let answerIndex = Math.floor(Math.random() * optionCount);
 
         this.setState({
             answerOptions: answerOptions,
             answerIndex: answerIndex,
+            isLoadingNewQuestion: false,
         });
     }
 
     selectOption(selectIndex) {
-        let answerCountry = this.state.answerOptions[this.state.answerIndex];
-        if (selectIndex === this.state.answerIndex)
-            alert("Correct!");
-        else
-            alert("Wrong, the correct answer is " + answerCountry.name);
+
+        if (this.state.isLoadingNewQuestion) return;
+
+        let answerOptions = this.state.answerOptions;
+        let answerIndex = this.state.answerIndex;
+
+        answerOptions = answerOptions.map(option => {
+            option.buttonState = buttonState.WRONG;
+            return option;
+        });
+        answerOptions[selectIndex].buttonState = buttonState.SELECTED;
+        answerOptions[answerIndex].buttonState = buttonState.CORRECT;
+
+        this.setState({answerOptions: answerOptions, isLoadingNewQuestion: true});
 
         setTimeout(() => {
             this.loadNewQuestion();

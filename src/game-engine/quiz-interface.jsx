@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
+
 function Flag(props) {
     return (
         <img className="flag-image" src={props.value}/>
@@ -8,15 +10,30 @@ function Flag(props) {
 
 function OptionButton(props) {
 
+    let buttonStyle = getButtonStyle(props.value.buttonState);
+
     return (
         <button
             type="button"
-            className={"col btn m-2 p-4 flex-0 option-button " + "btn-primary"}
+            className={"col btn m-2 p-4 flex-0 option-button " + buttonStyle}
             key={props.value.alpha3Code}
-            onClick={() => props.handleClick(props.value.alpha3Code)}>
+            onClick={props.handleClick}>
             {props.value.name}
         </button>
     );
+}
+
+function getButtonStyle(state) {
+    switch (state) {
+        case buttonState.UNSELECTED:
+            return "btn-primary";
+        case buttonState.WRONG:
+            return "btn-secondary";
+        case buttonState.CORRECT:
+            return "btn-success";
+        case buttonState.SELECTED:
+            return "btn-danger";
+    }
 }
 
 class QuizInterface extends Component {
