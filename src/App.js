@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import LeechDeepFryer from "./leech-deepfryer";
+import './css/App.css';
+import CountriesQuiz from "./countries-quiz";
 
 class App extends Component {
   render() {
     return (
-      <LeechDeepFryer/>
+      <CountriesQuiz/>
     );
   }
 }
