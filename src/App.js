@@ -28,7 +28,7 @@ class App extends Component {
           <h1> Joel </h1>
             <div className="App">
               <h1 className="App-title">Welcome to Snek</h1>
-                <Game/>
+                
             </div>
         </div>
         <div id="Eric" className="tabcontent">

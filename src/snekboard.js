@@ -119,7 +119,7 @@ class Game extends React.Component {
         if(!this.checkInBoard(newSnake) || !this.checkNoOverlap(newSnake[0], newSnake.slice(1))){
             alert("Game Ova");
             this.setState({
-                snake:[[5,5]],
+                snake:[],
             });
             this.moveFood();
         }
