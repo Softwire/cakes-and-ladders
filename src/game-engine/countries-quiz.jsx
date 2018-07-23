@@ -6,17 +6,18 @@ class CountriesQuiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            countries: null,
             appIsReady: false,
+            allCountries: null,
+            answerCountry: null,
         };
     }
 
     componentDidMount() {
-        fetch('https://restcountries.eu/rest/v2/all?fields=alpha2Code;name;flag')
+        fetch('https://restcountries.eu/rest/v2/all?fields=alpha3Code;name;flag')
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    countries: data,
+                    allCountries: data,
                     appIsReady: true,
                 })
             });
@@ -27,7 +28,7 @@ class CountriesQuiz extends Component {
         if (this.state.appIsReady) {
 
             let optionCountries = this.getNRandomCountries(4);
-            let answerCountry = this.getRandomFrom(optionCountries);
+            let answerCountry = CountriesQuiz.getRandomFrom(optionCountries);
 
             return (
                 <div className="container">
@@ -39,18 +40,23 @@ class CountriesQuiz extends Component {
                     <QuizInterface
                         optionCountries={optionCountries}
                         answerCountry={answerCountry}
+                        handleClick={this.selectOption}
                     />
                 </div>
             );
         }
         else
-            return (<p>Loading</p>);
+            return (<p className="m-5">Loading...</p>);
+    }
+
+    selectOption(buttonKey) {
+        alert(buttonKey)
     }
 
     getNRandomCountries(numberOfCountries) {
-        let randomCountries = []
+        let randomCountries = [];
         while (numberOfCountries > 0) {
-            let country = this.getRandomFrom(this.state.countries);
+            let country = CountriesQuiz.getRandomFrom(this.state.allCountries);
             if (!randomCountries.includes(country)) {
                 randomCountries.push(country);
                 numberOfCountries--;
@@ -59,7 +65,7 @@ class CountriesQuiz extends Component {
         return randomCountries
     }
 
-    getRandomFrom(array) {
+    static getRandomFrom(array) {
         return array[Math.floor(Math.random() * array.length)]
     }
 }

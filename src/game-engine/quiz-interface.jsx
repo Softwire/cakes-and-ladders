@@ -8,7 +8,13 @@ function Flag(props) {
 
 function OptionButton(props) {
     return (
-        <button type="button" className="col btn btn-primary m-2 p-4 flex-0 option-button">{props.value}</button>
+        <button
+            type="button"
+            className="col btn btn-primary m-2 p-4 flex-0 option-button"
+            key={props.value.alpha3Code}
+            onClick={() => props.handleClick(props.value.alpha3Code)}>
+            {props.value.name}
+        </button>
     );
 }
 
@@ -20,16 +26,16 @@ class QuizInterface extends Component {
                     <Flag value={this.props.answerCountry.flag}/>
                 </div>
                 <div className="row">
-                    <OptionButton key={this.props.optionCountries[0].alpha3Code}
-                                  value={this.props.optionCountries[0].name}/>
-                    <OptionButton key={this.props.optionCountries[1].alpha3Code}
-                                  value={this.props.optionCountries[1].name}/>
+                    <OptionButton value={this.props.optionCountries[0]}
+                                  handleClick={this.props.handleClick}/>
+                    <OptionButton value={this.props.optionCountries[1]}
+                                  handleClick={this.props.handleClick}/>
                 </div>
                 <div className="row">
-                    <OptionButton key={this.props.optionCountries[2].alpha3Code}
-                                  value={this.props.optionCountries[2].name}/>
-                    <OptionButton key={this.props.optionCountries[3].alpha3Code}
-                                  value={this.props.optionCountries[3].name}/>
+                    <OptionButton value={this.props.optionCountries[2]}
+                                  handleClick={this.props.handleClick}/>
+                    <OptionButton value={this.props.optionCountries[3]}
+                                  handleClick={this.props.handleClick}/>
                 </div>
             </React.Fragment>
         )
