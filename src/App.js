@@ -35,6 +35,7 @@ class RobinsElement extends React.Component {
     this.buttonClicked = this.buttonClicked.bind(this);
     this.gameEnded = this.gameEnded.bind(this);
     this.MainDisplay = this.MainDisplay.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   updateRounds() {
@@ -67,37 +68,53 @@ class RobinsElement extends React.Component {
     }
   }
 
+  handleClick() {
+    this.setState(
+      { gameRunning: true,
+        completedRounds: 0,
+        timeAllowed: 5,
+        leftButtonValue: 50,
+        rightButtonValue: 50}
+    )
+  }
+
   MainDisplay() {
-    while(this.state.gameRunning == true)
-      return(
-      <div>
-        <p>You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
-        <Button
-        buttonClicked = {this.buttonClicked}
-        type = 'left'
-        value = {this.state.leftButtonValue}
-        />
+    while(true) {
+      while(this.state.gameRunning == true)
+        return(
+        <div>
+          <p>Click the button displaying the higher number. </p>
+          <p>You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
+          <Button
+          buttonClicked = {this.buttonClicked}
+          type = 'left'
+          value = {this.state.leftButtonValue}
+          />
 
-        <Button
-        buttonClicked = {this.buttonClicked}
-        type = 'right'
-        value = {this.state.rightButtonValue}
-        />
-        <this.startClock
-        countdownFrom = {2}
-        completedRounds = {this.state.completedRounds}
-        gameEnded = {this.gameEnded}
-        />
-      </div>
-      );
-
-    return(
-        <p> GAME OVER. You reached round {this.state.completedRounds}! </p>
-    );
+          <Button
+          buttonClicked = {this.buttonClicked}
+          type = 'right'
+          value = {this.state.rightButtonValue}
+          />
+          <this.startClock
+          countdownFrom = {this.state.timeAllowed}
+          completedRounds = {this.state.completedRounds}
+          gameEnded = {this.gameEnded}
+          />
+        </div>
+        );
+      
+      while(this.state.gameRunning == false)
+        return(
+          <div>
+            <p> GAME OVER. You reached round {this.state.completedRounds}! </p>
+            <button onClick={this.handleClick.bind(this)}>Play again</button>
+          </div>
+        );
+    }
   }
 
   startClock(props) {
-    console.log(props.completedRounds)
     if(props.completedRounds >0)
       return <Clock 
       countdownFrom={props.countdownFrom}
@@ -116,7 +133,6 @@ class RobinsElement extends React.Component {
     return (
     <div>
       <h2>Hello, and welcome to Robin's component of fun and glory</h2>
-      <p>Click the button displaying the higher number. </p>
         <this.MainDisplay />
     </div>
     );
