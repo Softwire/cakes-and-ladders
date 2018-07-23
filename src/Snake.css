@@ -1,0 +1,39 @@
+.empty-square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  height: 20px;
+  margin: -1px;
+  padding: 0;
+  width: 20px;
+}
+
+.body-square {
+  background: #000;
+  border: 1px solid #000;
+  float: left;
+  height: 20px;
+  margin: -1px;
+  padding: 0;
+  width: 20px;
+}
+
+.food-square {
+  background: #00FF00;
+  border: 1px solid #000;
+  float: left;
+  height: 20px;
+  margin: -1px;
+  padding: 0;
+  width: 20px;
+}
+
+.dead-square {
+  background: #FF0000;
+  border: 1px solid #000;
+  float: left;
+  height: 20px;
+  margin: -1px;
+  padding: 0;
+  width: 20px;
+}
