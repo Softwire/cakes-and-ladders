@@ -6,6 +6,7 @@ class RobinsElement extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        highScore: 0,
         firstRunning: true,
         gameRunning: false,
         completedRounds: 0,
@@ -64,16 +65,17 @@ class RobinsElement extends React.Component {
   
     MainDisplay() {
       if(this.state.firstRunning == true)
-      return(<div>
-        <p> In this game, you will have {this.state.timeAllowed} seconds to complete as many rounds as possible.
-        In each round, all you need to do is click the bigger number. See how far you can get in this monstrously exciting game! </p>
-      <button onClick={this.handleClick.bind(this)}>Start</button>
-      </div>)
+        return(<div>
+            <p> In this game, you will have {this.state.timeAllowed} seconds to complete as many rounds as possible.
+            In each round, all you need to do is click the bigger number. See how far you can get in this monstrously exciting game! </p>
+        <button onClick={this.handleClick.bind(this)}>Start</button>
+        </div>)
       while(true) {
         while(this.state.gameRunning == true)
           return(
           <div>
             <p>Click the button displaying the higher number. </p>
+            <p><i> The furthest round anyone has reached is round {this.state.highScore} </i></p>
             <p>You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
             <AnswerButton
             buttonClicked = {this.buttonClicked}
@@ -92,19 +94,41 @@ class RobinsElement extends React.Component {
             completedRounds = {this.state.completedRounds}
             gameEnded = {this.gameEnded}
             />
+
           </div>
           );
         
         while(this.state.gameRunning == false)
-          return(
-            <div>
-              <p> GAME OVER. You reached round {this.state.completedRounds}! </p>
-              <button onClick={this.handleClick.bind(this)}>Play again</button>
-            </div>
-          );
+          {
+            let newRecord = false;
+            if(this.state.completedRounds > this.state.highScore) {
+                this.setState({highScore: this.state.completedRounds})
+                newRecord = true;
+            }
+            return(
+                <div>
+                <this.EndMessage
+                yourScore = {this.state.completedRounds}
+                highScore = {this.state.highScore}
+                newRecord = {newRecord}
+                />
+                <button onClick={this.handleClick.bind(this)}>Play again</button>
+                </div>
+            );
+        }
       }
     }
   
+    EndMessage(props) {
+    return(
+        <div>
+            <p> GAME OVER. You got to round {props.yourScore}! </p>
+            <p> The current high score is round {props.highScore} </p>
+        </div>
+    );
+    }
+
+
     startClock(props) {
       if(props.completedRounds >0)
         return <Clock 

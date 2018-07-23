@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Clock.css';
 
 class Clock extends React.Component {
   constructor(props){
@@ -22,7 +23,11 @@ class Clock extends React.Component {
   }
   render() {
     return(
-      <div>Time remaining:{this.state.currentCount}</div>
+      <div
+      className = "clockText"
+      >
+      Time remaining:{this.state.currentCount}
+      </div>
     );
   }
 }

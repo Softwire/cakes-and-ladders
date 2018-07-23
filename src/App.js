@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
-import AnswerButton from './AnswerButton.jsx'
 
 class App extends Component {
   render() {
@@ -21,37 +20,4 @@ class App extends Component {
     );
   }
 }
-
-
-
-
-
-class Clock extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {currentCount: props.countdownFrom}
-  }
-  timer() {
-    this.setState({
-      currentCount: this.state.currentCount - 1
-    })
-    if(this.state.currentCount < 1) { 
-      clearInterval(this.intervalId)
-      this.props.gameEnded()
-    }
-  }
-  componentDidMount() {
-    this.intervalId = setInterval(this.timer.bind(this), 1000);
-  }
-  componentWillUnmount(){
-    clearInterval(this.intervalId);
-  }
-  render() {
-    return(
-      <div>Time remaining:{this.state.currentCount}</div>
-    );
-  }
-}
-
-
 export default App;
