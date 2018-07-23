@@ -20,8 +20,57 @@ class App extends Component {
   }
 }
 
-function RobinsElement() {
-  return <h1>Hello, this will be Robin's element of fun and glory</h1>;
+class RobinsElement extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isToggleOn: true,
+      completedRounds: 0,
+    };
+    this.updateRounds = this.updateRounds.bind(this);
+  }
+
+  updateRounds() {
+    this.setState(prevState => (
+      {completedRounds : prevState.completedRounds +1}
+    ))
+  }
+
+  render() {
+    return (
+    <div>
+      <h2>Hello, and welcome to Robin's element of fun and glory</h2>
+      <p>Here, we will play a little game. Below, you should see two buttons. You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
+      <Button updateRounds = {this.updateRounds}/>
+    </div>
+    );
+  }
+}
+
+
+class Button extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = { random: 'Start' };
+  }
+
+  handleClick() {
+    const min = 1;
+    const max = 100;
+    const rand = Math.round(min + Math.random() * (max - min));
+    this.props.updateRounds();
+    this.setState(
+      {random: rand}
+    );
+  }
+
+  render() {
+    return (
+        <button onClick={this.handleClick.bind(this)}>{this.state.random}</button>
+    );
+  }
 }
 
 
