@@ -28,7 +28,7 @@ class CountriesQuiz extends Component {
             <div className="container">
                 <div className="row mt-5">
                     <div className="col">
-                        <h1>Leech Factory</h1>
+                        <h1>Countries Quiz</h1>
                         <p className="mt-5">{message}</p>
                         <button type="button" className={"btn " + this.state.buttonStyle}
                                 onClick={this.componentDidMount}>Fetch
