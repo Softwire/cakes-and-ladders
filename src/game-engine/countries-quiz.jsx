@@ -82,7 +82,7 @@ class CountriesQuiz extends Component {
 
         setTimeout(() => {
             this.loadNewQuestion();
-        }, 3000);
+        }, 2500);
     }
 
     getNRandomCountries(numberOfCountries) {
