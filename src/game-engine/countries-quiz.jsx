@@ -7,8 +7,6 @@ class CountriesQuiz extends Component {
         super(props);
         this.state = {
             appIsReady: false,
-            allCountries: null,
-            answerCountry: null,
         };
     }
 
@@ -17,9 +15,9 @@ class CountriesQuiz extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    allCountries: data,
                     appIsReady: true,
-                })
+                    allCountries: data,
+                });
             });
     }
 
