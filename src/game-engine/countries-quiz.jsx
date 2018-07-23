@@ -56,8 +56,7 @@ class CountriesQuiz extends Component {
     }
 
     selectOption(buttonKey) {
-        if (this.state.answerCountry != null)
-            alert(buttonKey === this.state.answerCountry.alpha3Code)
+        alert(buttonKey === this.state.answerCountry.alpha3Code)
     }
 
     getNRandomCountries(numberOfCountries) {
