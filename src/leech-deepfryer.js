@@ -37,10 +37,10 @@ class LeechDeepFryer extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
+                <div className="row mt-5">
                     <div className="col">
                         <h1>Leech Factory</h1>
-                        <p>{this.state.message}</p>
+                        <p className="mt-5">{this.state.message}</p>
                         <button type="button" className={"btn " + this.state.buttonStyle} onClick={this.startDeepFry}>Deep Fry</button>
                     </div>
                 </div>
