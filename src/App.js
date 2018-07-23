@@ -26,8 +26,8 @@ class RobinsElement extends React.Component {
     this.state = {
       isToggleOn: true,
       completedRounds: 0,
-      leftButtonValue: null,
-      rightButtonValue: null
+      leftButtonValue: 50,
+      rightButtonValue: 50
     };
     this.updateRounds = this.updateRounds.bind(this);
     this.updateButtonValue = this.updateButtonValue.bind(this);
@@ -50,9 +50,9 @@ class RobinsElement extends React.Component {
   isCorrectButton(buttonID) {
     let correct
     if(buttonID == 'left')
-      correct = this.state.leftButtonValue >= this.state.rightButtonValue ? true : false
+      correct = (this.state.leftButtonValue >= this.state.rightButtonValue ? true : false)
     else
-      correct = this.state.rightButtonValue >= this.state.leftButtonValue ? true : false
+      correct = (this.state.rightButtonValue >= this.state.leftButtonValue ? true : false)
     return correct
   }
 
@@ -90,18 +90,16 @@ class Button extends React.Component {
   }
 
   handleClick() {
-    const min = 1;
-    const max = 100;
-    const rand = Math.round(min + Math.random() * (max - min));
-    this.setState(
-      {random: rand}
-    );
-    this.props.updateRounds();
-    this.props.updateButtonValue(this.type, rand);
     if(!this.props.isCorrectButton(this.type))
-    this.setState(
-      {random: 'FALSE'}
-    );
+      this.setState({random: 'FALSE'});
+    else {
+      const min = 1;
+      const max = 100;
+      const rand = Math.round(min + Math.random() * (max - min));
+      this.setState({random: rand});
+      this.props.updateRounds();
+      this.props.updateButtonValue(this.type, rand);
+    }
   }
 
   render() {
