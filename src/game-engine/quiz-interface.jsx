@@ -28,18 +28,18 @@ class QuizInterface extends Component {
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.answerOptions[0]}
-                                  handleClick={this.props.handleClick}
+                                  handleClick={() => this.props.handleClick(0)}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                     <OptionButton value={this.props.answerOptions[1]}
-                                  handleClick={this.props.handleClick}
+                                  handleClick={() => this.props.handleClick(1)}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.answerOptions[2]}
-                                  handleClick={this.props.handleClick}
+                                  handleClick={() => this.props.handleClick(2)}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                     <OptionButton value={this.props.answerOptions[3]}
-                                  handleClick={this.props.handleClick}
+                                  handleClick={() =>this. props.handleClick(3)}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>
             </React.Fragment>

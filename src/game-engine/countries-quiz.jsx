@@ -56,9 +56,9 @@ class CountriesQuiz extends Component {
         });
     }
 
-    selectOption(buttonKey) {
+    selectOption(selectIndex) {
         let answerCountry = this.state.answerOptions[this.state.answerIndex];
-        if (buttonKey === answerCountry.alpha3Code)
+        if (selectIndex === this.state.answerIndex)
             alert("Correct!");
         else
             alert("Wrong, the correct answer is " + answerCountry.name);
