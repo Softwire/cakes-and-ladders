@@ -32,11 +32,11 @@ class CountriesQuiz extends Component {
                     <div className="row mt-5">
                         <div className="col">
                             <h1>Countries Quiz</h1>
-                            <QuizInterface
-                                currentCountry={currentCountry}
-                            />
                         </div>
                     </div>
+                    <QuizInterface
+                        currentCountry={currentCountry}
+                    />
                 </div>
             );
         }

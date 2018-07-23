@@ -3,3 +3,9 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
+
+.flag-image {
+    height: 20em;
+    margin: 5em auto;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1);
+}
