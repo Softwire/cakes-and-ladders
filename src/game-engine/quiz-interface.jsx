@@ -24,21 +24,21 @@ class QuizInterface extends Component {
         return (
             <React.Fragment>
                 <div className="row">
-                    <Flag value={this.props.answerCountry.flag}/>
+                    <Flag value={this.props.answerOptions[this.props.answerIndex].flag}/>
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.optionCountries[0]}
+                    <OptionButton value={this.props.answerOptions[0]}
                                   handleClick={this.props.handleClick}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
-                    <OptionButton value={this.props.optionCountries[1]}
+                    <OptionButton value={this.props.answerOptions[1]}
                                   handleClick={this.props.handleClick}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.optionCountries[2]}
+                    <OptionButton value={this.props.answerOptions[2]}
                                   handleClick={this.props.handleClick}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
-                    <OptionButton value={this.props.optionCountries[3]}
+                    <OptionButton value={this.props.answerOptions[3]}
                                   handleClick={this.props.handleClick}
                                   isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>

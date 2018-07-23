@@ -7,8 +7,8 @@ class CountriesQuiz extends Component {
         super(props);
         this.state = {
             allCountries: null,
-            optionCountries: null,
-            answerCountry: null,
+            answerOptions: null,
+            answerIndex: -1,
             isShowingAnswer: false,
         };
 
@@ -28,7 +28,7 @@ class CountriesQuiz extends Component {
 
     render() {
 
-        if (this.state.answerCountry == null) return (<p className="m-5">Loading...</p>);
+        if (this.state.answerIndex === -1) return (<p className="m-5">Loading...</p>);
 
         return (
             <div className="container">
@@ -38,32 +38,34 @@ class CountriesQuiz extends Component {
                     </div>
                 </div>
                 <QuizInterface
-                    optionCountries={this.state.optionCountries}
-                    answerCountry={this.state.answerCountry}
+                    answerOptions={this.state.answerOptions}
+                    answerIndex={this.state.answerIndex}
                     handleClick={this.selectOption}
-                    showAnswer={this.isShowingAnswer}
                 />
             </div>
         );
     }
 
     loadNewQuestion() {
-        let optionCountries = this.getNRandomCountries(4);
-        let answerCountry = CountriesQuiz.getRandomFrom(optionCountries);
+        let answerOptions = this.getNRandomCountries(4);
+        let answerIndex = Math.floor(Math.random() * answerOptions.length);
 
         this.setState({
-            optionCountries: optionCountries,
-            answerCountry: answerCountry,
+            answerOptions: answerOptions,
+            answerIndex: answerIndex,
         });
     }
 
     selectOption(buttonKey) {
-        if (buttonKey === this.state.answerCountry.alpha3Code)
+        let answerCountry = this.state.answerOptions[this.state.answerIndex];
+        if (buttonKey === answerCountry.alpha3Code)
             alert("Correct!");
         else
-            alert("Wrong, the correct answer is " + this.state.answerCountry.name);
+            alert("Wrong, the correct answer is " + answerCountry.name);
 
-        this.loadNewQuestion();
+        setTimeout(() => {
+            this.loadNewQuestion();
+        }, 3000);
     }
 
     getNRandomCountries(numberOfCountries) {
