@@ -24,13 +24,16 @@ class CountriesQuiz extends Component {
     render() {
 
         if (this.state.appIsReady) {
+
+            let currentCountry = this.getRandomCountry();
+
             return (
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col">
                             <h1>Countries Quiz</h1>
                             <QuizInterface
-                                countries = {this.state.countries}
+                                currentCountry={currentCountry}
                             />
                         </div>
                     </div>
@@ -39,6 +42,10 @@ class CountriesQuiz extends Component {
         }
         else
             return (<p>Loading</p>);
+    }
+
+    getRandomCountry() {
+        return this.state.countries[Math.floor(Math.random() * this.state.countries.length)];
     }
 }
 

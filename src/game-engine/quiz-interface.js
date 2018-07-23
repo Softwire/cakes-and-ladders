@@ -11,7 +11,7 @@ class QuizInterface extends Component {
         return (
             <div className="row">
                 <Flag
-                    value={this.props.countries[0].flag}
+                    value={this.props.currentCountry.flag}
                 />
             </div>
         )
