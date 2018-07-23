@@ -17,15 +17,19 @@ class QuizInterface extends Component {
         return (
             <React.Fragment>
                 <div className="row">
-                    <Flag value={this.props.answerCountry.flag} />
+                    <Flag value={this.props.answerCountry.flag}/>
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.optionCountries[0].name} />
-                    <OptionButton value={this.props.optionCountries[1].name} />
+                    <OptionButton key={this.props.optionCountries[0].alpha3Code}
+                                  value={this.props.optionCountries[0].name}/>
+                    <OptionButton key={this.props.optionCountries[1].alpha3Code}
+                                  value={this.props.optionCountries[1].name}/>
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.optionCountries[2].name} />
-                    <OptionButton value={this.props.optionCountries[3].name} />
+                    <OptionButton key={this.props.optionCountries[2].alpha3Code}
+                                  value={this.props.optionCountries[2].name}/>
+                    <OptionButton key={this.props.optionCountries[3].alpha3Code}
+                                  value={this.props.optionCountries[3].name}/>
                 </div>
             </React.Fragment>
         )
