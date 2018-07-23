@@ -23,6 +23,7 @@ class Dynamite extends React.Component{
             alert("Boom");
         }
 
+
         this.setState({
             counter: newCount,
             message: newMessage,
@@ -30,12 +31,22 @@ class Dynamite extends React.Component{
         })
     }
 
+    renderIcon(){
+        if(this.state.message === "Safe"){
+            return(<img src="/images/safe.jpeg" width="40"
+                        height="40" alt="Safe" />)
+        }
+        else{ return ( <img src="/images/dynamiteIcon.png" width="40"
+                            height="40" alt="Dynamite" />)
+        }
+    }
+
     render(i){
         var name = 'Button '+ i;
         return( <button id = {name} className = "Dynamite"
                         onClick = {() => this.handleClick()}
         >
-            {this.state.message}
+            {this.renderIcon()}
         </button>)
     }
 }
