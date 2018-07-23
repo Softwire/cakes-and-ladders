@@ -25,7 +25,10 @@ class CountriesQuiz extends Component {
 
         if (this.state.appIsReady) {
 
-            let currentCountry = this.getRandomCountry();
+            let randomCountries = this.getNRandomCountries(4);
+            
+            let answerCountry = randomCountries[0];
+            let answerOptions = randomCountries.map(country => country.name);
 
             return (
                 <div className="container">
@@ -35,7 +38,8 @@ class CountriesQuiz extends Component {
                         </div>
                     </div>
                     <QuizInterface
-                        currentCountry={currentCountry}
+                        answerCountry={answerCountry}
+                        answerOptions={answerOptions}
                     />
                 </div>
             );
@@ -44,8 +48,18 @@ class CountriesQuiz extends Component {
             return (<p>Loading</p>);
     }
 
-    getRandomCountry() {
-        return this.state.countries[Math.floor(Math.random() * this.state.countries.length)];
+    getNRandomCountries(numberOfCountries) {
+        let result = new Array(numberOfCountries),
+            len = this.state.countries.length,
+            taken = new Array(len);
+        if (numberOfCountries > len)
+            throw new RangeError("More elements taken than available");
+        while (numberOfCountries--) {
+            let x = Math.floor(Math.random() * len);
+            result[numberOfCountries] = this.state.countries[x in taken ? taken[x] : x];
+            taken[x] = --len in taken ? taken[len] : len;
+        }
+        return result;
     }
 }
 

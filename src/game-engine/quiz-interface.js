@@ -8,7 +8,7 @@ function Flag(props) {
 
 function OptionButton(props) {
     return (
-        <button type="button" className="col btn btn-primary">{props.value}</button>
+        <button type="button" className="col btn btn-primary m-2">{props.value}</button>
     );
 }
 
@@ -17,15 +17,15 @@ class QuizInterface extends Component {
         return (
             <React.Fragment>
                 <div className="row">
-                    <Flag value={this.props.currentCountry.flag} />
+                    <Flag value={this.props.answerCountry.flag} />
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.currentCountry.name} />
-                    <OptionButton value={this.props.currentCountry.name} />
+                    <OptionButton value={this.props.answerOptions[0]} />
+                    <OptionButton value={this.props.answerOptions[1]} />
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.currentCountry.name} />
-                    <OptionButton value={this.props.currentCountry.name} />
+                    <OptionButton value={this.props.answerOptions[2]} />
+                    <OptionButton value={this.props.answerOptions[3]} />
                 </div>
             </React.Fragment>
         )
