@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0549126b-a7c3-4d0b-8ac7-a60bfadadc99" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/dynamiteIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/safe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/goodImage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/snekboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/snekboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dynamite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dynamite.js" afterDir="false" />
@@ -24,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snekboard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="snekboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snekboard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -58,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -236,12 +241,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532103293399</updated>
-      <workItem from="1532103298104" duration="26735000" />
+      <workItem from="1532103298104" duration="26758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26735000" />
+    <option name="totallyTimeSpent" value="26758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="957" height="1167" extended-state="0" />
@@ -320,6 +325,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/snekboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#setDirection#0;n#Game#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dynamite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -327,12 +343,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$PROJECT_DIR$/src/snekboard.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -346,20 +360,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snekboard.css">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/snekboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        <state>
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="n#!!block;n#setDirection#0;n#Game#0" />
           </folding>
         </state>
       </provider>
