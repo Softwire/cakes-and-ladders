@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AnswerButton from './AnswerButton.jsx'
 import Clock from './Clock.jsx'
 import './RobinsElement.css';
@@ -30,22 +30,22 @@ class RobinsElement extends React.Component {
     }
   
     updateButtonValue(buttonID, value) {
-      if(buttonID == 'left')
+      if(buttonID === 'left')
         this.setState({leftButtonValue : value})
       else 
         this.setState({rightButtonValue: value})
     }
   
     buttonClicked(buttonID) {
-      if((buttonID == 'right' && this.state.rightButtonValue < this.state.leftButtonValue) 
-      || (buttonID == 'left' && this.state.leftButtonValue < this.state.rightButtonValue))
+      if((buttonID === 'right' && this.state.rightButtonValue < this.state.leftButtonValue) 
+      || (buttonID === 'left' && this.state.leftButtonValue < this.state.rightButtonValue))
         this.gameEnded();
       else {
         const min = 1;
         const max = 100;
         const randLeft = Math.round(min + Math.random() * (max - min));
         var randRight = Math.round(min + Math.random() * (max - min));
-        while(randRight == randLeft)
+        while(randRight === randLeft)
           randRight = Math.round(min + Math.random() * (max - min));
         this.updateRounds();
         this.updateButtonValue('left', randLeft);
@@ -65,7 +65,7 @@ class RobinsElement extends React.Component {
     }
   
     MainDisplay() {
-      if(this.state.firstRunning == true)
+      if(this.state.firstRunning === true)
         return(<div>
             <p> In this game, you will have {this.state.timeAllowed} seconds to complete as many rounds as possible. <br/>
             In each round, all you need to do is click the bigger number. <br/>See how far you can get in this monstrously exciting game! </p>
@@ -78,12 +78,12 @@ class RobinsElement extends React.Component {
             </div>)
 
       while(true) {
-        while(this.state.gameRunning == true)
+        while(this.state.gameRunning === true)
           return(
           <div>
             <p>Click the button displaying the higher number. </p>
             <p><i> The current high score is round {this.state.highScore} </i></p>
-            <p>You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
+            <p>You have completed {this.state.completedRounds} round{this.state.completedRounds === 1 ? '':'s'}.</p>
             <AnswerButton
             buttonClicked = {this.buttonClicked}
             type = 'left'
@@ -102,19 +102,13 @@ class RobinsElement extends React.Component {
           </div>
           );
         
-        while(this.state.gameRunning == false)
+        while(this.state.gameRunning === false)
           {
-            let newRecord = false;
-            if(this.state.completedRounds > this.state.highScore) {
-                this.setState({highScore: this.state.completedRounds})
-                newRecord = true;
-            }
             return(
                 <div>
                 <this.EndMessage
                 yourScore = {this.state.completedRounds}
                 highScore = {this.state.highScore}
-                newRecord = {newRecord}
                 />
                 <button
                 onClick={this.handleClick.bind(this)}
@@ -149,6 +143,9 @@ class RobinsElement extends React.Component {
   
     gameEnded() {
       this.setState({gameRunning : false})
+      if(this.state.completedRounds > this.state.highScore) {
+        this.setState({highScore: this.state.completedRounds})
+    }
     }
   
     render() {

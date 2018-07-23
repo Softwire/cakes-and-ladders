@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Clock.css';
 
 class Clock extends React.Component {
@@ -8,15 +8,15 @@ class Clock extends React.Component {
   }
   timer() {
     this.setState({
-      currentCount: this.state.currentCount - 1
+      currentCount: (this.state.currentCount - 0.01).toFixed(2)
     })
-    if(this.state.currentCount < 1) { 
+    if(this.state.currentCount < 0.01) { 
       clearInterval(this.intervalId)
       this.props.gameEnded()
     }
   }
   componentDidMount() {
-    this.intervalId = setInterval(this.timer.bind(this), 1000);
+    this.intervalId = setInterval(this.timer.bind(this), 10);
   }
   componentWillUnmount(){
     clearInterval(this.intervalId);
