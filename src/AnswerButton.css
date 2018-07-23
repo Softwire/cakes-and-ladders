@@ -1,0 +1,9 @@
+.buttonText {
+    font-size: 30px;
+    background-color: #4CAF50;
+    border-radius: 8px;
+}
+
+.buttonText:hover {
+    background-color: #52BE80 ;
+}
