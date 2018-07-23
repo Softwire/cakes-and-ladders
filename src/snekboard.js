@@ -45,7 +45,7 @@ class Board extends React.Component {
     }
 }
 
-class Game extends React.Component {
+class JoelGame extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,8 +59,6 @@ class Game extends React.Component {
         this.startGame = this.startGame.bind(this);
         this.setDirection = this.setDirection.bind(this);
         this.moveFood = this.moveFood.bind(this);
-
-        this.startGame();
     }
 
 
@@ -83,7 +81,7 @@ class Game extends React.Component {
             direction: 39,
         });
         this.moveFood();
-        setInterval(this.moveSnake,150);
+        this.moveSnakeInterval = setInterval(this.moveSnake,120);
     }
 
     moveSnake() {
@@ -118,16 +116,12 @@ class Game extends React.Component {
 
         if(!this.checkInBoard(newSnake) || !this.checkNoOverlap(newSnake[0], newSnake.slice(1))){
             alert("Game Ova");
-            this.setState({
-                snake:[],
-            });
-            this.moveFood();
+            clearTimeout(this.moveSnakeInterval);
+            this.setState({snake:[]})
         }
-
-
-
-
-        this.updateBoard();
+        else{
+            this.updateBoard();
+        }
     }
 
     checkIfAteFood(newSnake){
@@ -183,9 +177,10 @@ class Game extends React.Component {
                     />
                 </div>
                 <ul>Highscore: {this.state.highscore}</ul>
+                <ul> <button onClick = {() => {this.startGame()}}> Start Game </button></ul>
             </div>
         );
     }
 }
 
-export default Game;
+export default JoelGame;
