@@ -5,6 +5,7 @@ import Dynamite from "./Dynamite.js";
 import Game from "./snekboard.js";
 import Board from "./snekboard.js";
 import Square from "./snekboard.js";
+import Snake from './Snake.js';
 
 class App extends Component {
   render() {
@@ -41,6 +42,7 @@ class App extends Component {
         </div>
         <div id="Charlie" className="tabcontent">
           <h1> Charlie </h1>
+          <Snake />
         </div>
       </div>
     );
