@@ -6,8 +6,12 @@ class CountriesQuiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            appIsReady: false,
+            allCountries: null,
+            optionCountries: null,
+            answerCountry: null,
         };
+
+        this.selectOption = this.selectOption.bind(this);
     }
 
     componentDidMount() {
@@ -15,40 +19,45 @@ class CountriesQuiz extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    appIsReady: true,
                     allCountries: data,
                 });
+                this.updateCurrentQuestion();
             });
     }
 
     render() {
 
-        if (this.state.appIsReady) {
+        if (this.state.answerCountry == null) return (<p className="m-5">Loading...</p>);
 
-            let optionCountries = this.getNRandomCountries(4);
-            let answerCountry = CountriesQuiz.getRandomFrom(optionCountries);
-
-            return (
-                <div className="container">
-                    <div className="row mt-5">
-                        <div className="col">
-                            <h1>Countries Quiz</h1>
-                        </div>
+        return (
+            <div className="container">
+                <div className="row mt-5">
+                    <div className="col">
+                        <h1>Countries Quiz</h1>
                     </div>
-                    <QuizInterface
-                        optionCountries={optionCountries}
-                        answerCountry={answerCountry}
-                        handleClick={this.selectOption}
-                    />
                 </div>
-            );
-        }
-        else
-            return (<p className="m-5">Loading...</p>);
+                <QuizInterface
+                    optionCountries={this.state.optionCountries}
+                    answerCountry={this.state.answerCountry}
+                    handleClick={this.selectOption}
+                />
+            </div>
+        );
+    }
+
+    updateCurrentQuestion() {
+        let optionCountries = this.getNRandomCountries(4);
+        let answerCountry = CountriesQuiz.getRandomFrom(optionCountries);
+
+        this.setState({
+            optionCountries: optionCountries,
+            answerCountry: answerCountry,
+        });
     }
 
     selectOption(buttonKey) {
-        alert(buttonKey)
+        if (this.state.answerCountry != null)
+            alert(buttonKey === this.state.answerCountry.alpha3Code)
     }
 
     getNRandomCountries(numberOfCountries) {
