@@ -24,7 +24,7 @@ class RobinsElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggleOn: true,
+      gameRunning: true,
       completedRounds: 0,
       leftButtonValue: 50,
       rightButtonValue: 50
@@ -32,6 +32,10 @@ class RobinsElement extends React.Component {
     this.updateRounds = this.updateRounds.bind(this);
     this.updateButtonValue = this.updateButtonValue.bind(this);
     this.isCorrectButton = this.isCorrectButton.bind(this);
+    this.leftButtonClicked = this.leftButtonClicked.bind(this);
+    this.rightButtonClicked = this.rightButtonClicked.bind(this);
+    this.gameEnded = this.gameEnded.bind(this);
+    this.MainDisplay = this.MainDisplay.bind(this);
   }
 
   updateRounds() {
@@ -56,25 +60,69 @@ class RobinsElement extends React.Component {
     return correct
   }
 
+  leftButtonClicked() {
+    console.log("left button was clicked")
+    if(this.state.leftButtonValue < this.state.rightButtonValue)
+      this.gameEnded();
+    else {
+      const min = 1;
+      const max = 100;
+      const rand = Math.round(min + Math.random() * (max - min));
+      this.updateRounds();
+      this.updateButtonValue('left', rand);
+      return rand;
+    }
+  }
+
+  rightButtonClicked() {
+    console.log("right button was clicked")
+    if(this.state.rightButtonValue < this.state.leftButtonValue)
+      this.gameEnded();
+    else {
+      const min = 1;
+      const max = 100;
+      const rand = Math.round(min + Math.random() * (max - min));
+      this.updateRounds();
+      this.updateButtonValue('right', rand);
+      return rand;
+    }
+  }
+
+  MainDisplay() {
+    while(this.state.gameRunning == true)
+      return(
+      <div>
+        <p>You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
+        <Button
+        leftButtonClicked = {this.leftButtonClicked}
+        rightButtonClicked = {this.rightButtonClicked}
+        type = 'left'
+        />
+
+        <Button
+        leftButtonClicked = {this.leftButtonClicked}
+        rightButtonClicked = {this.rightButtonClicked}
+        type = 'right'
+        />
+      </div>
+      );
+
+    return(
+        <p> GAME OVER. You reached round {this.state.completedRounds}! </p>
+    );
+  }
+
+
+  gameEnded() {
+    this.setState({gameRunning : false})
+  }
+
   render() {
     return (
     <div>
-      <h2>Hello, and welcome to Robin's element of fun and glory</h2>
-      <p>Here, we will play a little game. You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
-
-      <Button
-      updateRounds = {this.updateRounds}
-      updateButtonValue = {this.updateButtonValue}
-      isCorrectButton = {this.isCorrectButton}
-      type = 'left'
-      />
-
-      <Button
-      updateRounds = {this.updateRounds}
-      updateButtonValue = {this.updateButtonValue}
-      isCorrectButton = {this.isCorrectButton}
-      type = 'right'
-      />
+      <h2>Hello, and welcome to Robin's component of fun and glory</h2>
+      <p>Here, we will play a little game. Below are two buttons; click the button displaying the higher number. </p>
+        <this.MainDisplay />
     </div>
     );
   }
@@ -90,16 +138,14 @@ class Button extends React.Component {
   }
 
   handleClick() {
-    if(!this.props.isCorrectButton(this.type))
-      this.setState({random: 'FALSE'});
-    else {
-      const min = 1;
-      const max = 100;
-      const rand = Math.round(min + Math.random() * (max - min));
-      this.setState({random: rand});
-      this.props.updateRounds();
-      this.props.updateButtonValue(this.type, rand);
-    }
+    console.log(this)
+    console.log(this.props.type)
+    let new_value
+    if(this.props.type == "left")
+      new_value = this.props.leftButtonClicked();
+    else
+      new_value = this.props.rightButtonClicked();
+    this.setState({random: new_value});
   }
 
   render() {
