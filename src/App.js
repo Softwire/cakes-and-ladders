@@ -26,8 +26,12 @@ class RobinsElement extends React.Component {
     this.state = {
       isToggleOn: true,
       completedRounds: 0,
+      leftButtonValue: null,
+      rightButtonValue: null
     };
     this.updateRounds = this.updateRounds.bind(this);
+    this.updateButtonValue = this.updateButtonValue.bind(this);
+    this.isCorrectButton = this.isCorrectButton.bind(this);
   }
 
   updateRounds() {
@@ -36,12 +40,41 @@ class RobinsElement extends React.Component {
     ))
   }
 
+  updateButtonValue(buttonID, value) {
+    if(buttonID == 'left')
+      this.setState({leftButtonValue : value})
+    else 
+      this.setState({rightButtonValue: value})
+  }
+
+  isCorrectButton(buttonID) {
+    let correct
+    if(buttonID == 'left')
+      correct = this.state.leftButtonValue >= this.state.rightButtonValue ? true : false
+    else
+      correct = this.state.rightButtonValue >= this.state.leftButtonValue ? true : false
+    return correct
+  }
+
   render() {
     return (
     <div>
       <h2>Hello, and welcome to Robin's element of fun and glory</h2>
-      <p>Here, we will play a little game. Below, you should see two buttons. You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
-      <Button updateRounds = {this.updateRounds}/>
+      <p>Here, we will play a little game. You have completed {this.state.completedRounds} round{this.state.completedRounds == 1 ? '':'s'}.</p>
+
+      <Button
+      updateRounds = {this.updateRounds}
+      updateButtonValue = {this.updateButtonValue}
+      isCorrectButton = {this.isCorrectButton}
+      type = 'left'
+      />
+
+      <Button
+      updateRounds = {this.updateRounds}
+      updateButtonValue = {this.updateButtonValue}
+      isCorrectButton = {this.isCorrectButton}
+      type = 'right'
+      />
     </div>
     );
   }
@@ -53,16 +86,21 @@ class Button extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { random: 'Start' };
+    this.state = { random: 50 };
   }
 
   handleClick() {
     const min = 1;
     const max = 100;
     const rand = Math.round(min + Math.random() * (max - min));
-    this.props.updateRounds();
     this.setState(
       {random: rand}
+    );
+    this.props.updateRounds();
+    this.props.updateButtonValue(this.type, rand);
+    if(!this.props.isCorrectButton(this.type))
+    this.setState(
+      {random: 'FALSE'}
     );
   }
 
