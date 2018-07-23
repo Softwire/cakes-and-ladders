@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
-import Dynamite from "./Dynamite.js";
-import Game from "./snekboard.js";
-import Board from "./snekboard.js";
-import Square from "./snekboard.js";
+import JoelGame from "./snekboard.js";
 import Snake from './Snake.js';
 
 class App extends Component {
@@ -28,7 +25,7 @@ class App extends Component {
           <h1> Joel </h1>
             <div className="App">
               <h1 className="App-title">Welcome to Snek</h1>
-                
+                <JoelGame/>
             </div>
         </div>
         <div id="Eric" className="tabcontent">
