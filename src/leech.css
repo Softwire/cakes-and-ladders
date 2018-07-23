@@ -1,0 +1,27 @@
+.leeches {
+    border: 1px solid #fa0574;
+    padding: 1em;
+}
+
+.leeches p {
+    padding-top: 0;
+}
+
+.leeches button {
+    padding: 0.7em 1em;
+    background-color: rgb(240, 240, 240);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border-bottom: 3px solid #fff;
+}
+
+.leeches button:hover, .leeches button:focus {
+    border-bottom-color: #ccc;
+    transform: translateY(-3px);
+}
+
+.leeches button:active {
+    border-bottom-color: transparent;
+    transform: translateY(0);
+}

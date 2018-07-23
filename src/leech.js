@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './leech.css';
 
 class Leech extends Component {
     constructor(props) {
