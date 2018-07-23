@@ -7,10 +7,11 @@ function Flag(props) {
 }
 
 function OptionButton(props) {
+
     return (
         <button
             type="button"
-            className="col btn btn-primary m-2 p-4 flex-0 option-button"
+            className={"col btn m-2 p-4 flex-0 option-button " + "btn-primary"}
             key={props.value.alpha3Code}
             onClick={() => props.handleClick(props.value.alpha3Code)}>
             {props.value.name}
@@ -27,15 +28,19 @@ class QuizInterface extends Component {
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.optionCountries[0]}
-                                  handleClick={this.props.handleClick}/>
+                                  handleClick={this.props.handleClick}
+                                  isShowingAnswer={this.props.isShowingAnswer}/>
                     <OptionButton value={this.props.optionCountries[1]}
-                                  handleClick={this.props.handleClick}/>
+                                  handleClick={this.props.handleClick}
+                                  isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.optionCountries[2]}
-                                  handleClick={this.props.handleClick}/>
+                                  handleClick={this.props.handleClick}
+                                  isShowingAnswer={this.props.isShowingAnswer}/>
                     <OptionButton value={this.props.optionCountries[3]}
-                                  handleClick={this.props.handleClick}/>
+                                  handleClick={this.props.handleClick}
+                                  isShowingAnswer={this.props.isShowingAnswer}/>
                 </div>
             </React.Fragment>
         )

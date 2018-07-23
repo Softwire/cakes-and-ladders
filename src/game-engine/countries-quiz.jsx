@@ -9,6 +9,7 @@ class CountriesQuiz extends Component {
             allCountries: null,
             optionCountries: null,
             answerCountry: null,
+            isShowingAnswer: false,
         };
 
         this.selectOption = this.selectOption.bind(this);
@@ -21,7 +22,7 @@ class CountriesQuiz extends Component {
                 this.setState({
                     allCountries: data,
                 });
-                this.updateCurrentQuestion();
+                this.loadNewQuestion();
             });
     }
 
@@ -40,12 +41,13 @@ class CountriesQuiz extends Component {
                     optionCountries={this.state.optionCountries}
                     answerCountry={this.state.answerCountry}
                     handleClick={this.selectOption}
+                    showAnswer={this.isShowingAnswer}
                 />
             </div>
         );
     }
 
-    updateCurrentQuestion() {
+    loadNewQuestion() {
         let optionCountries = this.getNRandomCountries(4);
         let answerCountry = CountriesQuiz.getRandomFrom(optionCountries);
 
@@ -56,7 +58,12 @@ class CountriesQuiz extends Component {
     }
 
     selectOption(buttonKey) {
-        alert(buttonKey === this.state.answerCountry.alpha3Code)
+        if (buttonKey === this.state.answerCountry.alpha3Code)
+            alert("Correct!");
+        else
+            alert("Wrong, the correct answer is " + this.state.answerCountry.name);
+
+        this.loadNewQuestion();
     }
 
     getNRandomCountries(numberOfCountries) {
