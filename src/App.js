@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-<<<<<<< HEAD
-import Snake from './Snake.js';
-=======
 import RobinsElement from './RobinsElement.jsx';
->>>>>>> 7e22c36e91d466a27d1f7316a80b4122eca60267
 
 class App extends Component {
   render() {
     return (
-<<<<<<< HEAD
-      <div className="App">
-        <Snake />
-=======
       <div>
         <div className="tab">
           <button className="tablinks" onClick={(e) => this.openCity(e, "Robin")}>Robin</button>
@@ -42,7 +34,6 @@ class App extends Component {
         <div id="Charlie" className="tabcontent">
           <h1> Charlie </h1>
         </div>
->>>>>>> 7e22c36e91d466a27d1f7316a80b4122eca60267
       </div>
     );
   }
