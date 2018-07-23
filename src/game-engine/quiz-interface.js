@@ -20,12 +20,12 @@ class QuizInterface extends Component {
                     <Flag value={this.props.answerCountry.flag} />
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.answerOptions[0]} />
-                    <OptionButton value={this.props.answerOptions[1]} />
+                    <OptionButton value={this.props.optionCountries[0].name} />
+                    <OptionButton value={this.props.optionCountries[1].name} />
                 </div>
                 <div className="row">
-                    <OptionButton value={this.props.answerOptions[2]} />
-                    <OptionButton value={this.props.answerOptions[3]} />
+                    <OptionButton value={this.props.optionCountries[2].name} />
+                    <OptionButton value={this.props.optionCountries[3].name} />
                 </div>
             </React.Fragment>
         )

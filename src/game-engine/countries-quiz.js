@@ -25,10 +25,8 @@ class CountriesQuiz extends Component {
 
         if (this.state.appIsReady) {
 
-            let randomCountries = this.getNRandomCountries(4);
-            
-            let answerCountry = randomCountries[0];
-            let answerOptions = randomCountries.map(country => country.name);
+            let optionCountries = this.getNRandomCountries(4);
+            let answerCountry = this.getRandomFrom(optionCountries);
 
             return (
                 <div className="container">
@@ -38,8 +36,8 @@ class CountriesQuiz extends Component {
                         </div>
                     </div>
                     <QuizInterface
+                        optionCountries={optionCountries}
                         answerCountry={answerCountry}
-                        answerOptions={answerOptions}
                     />
                 </div>
             );
@@ -49,17 +47,19 @@ class CountriesQuiz extends Component {
     }
 
     getNRandomCountries(numberOfCountries) {
-        let result = new Array(numberOfCountries),
-            len = this.state.countries.length,
-            taken = new Array(len);
-        if (numberOfCountries > len)
-            throw new RangeError("More elements taken than available");
-        while (numberOfCountries--) {
-            let x = Math.floor(Math.random() * len);
-            result[numberOfCountries] = this.state.countries[x in taken ? taken[x] : x];
-            taken[x] = --len in taken ? taken[len] : len;
+        let randomCountries = []
+        while (numberOfCountries > 0) {
+            let country = this.getRandomFrom(this.state.countries);
+            if (!randomCountries.includes(country)) {
+                randomCountries.push(country);
+                numberOfCountries--;
+            }
         }
-        return result;
+        return randomCountries
+    }
+
+    getRandomFrom(array) {
+        return array[Math.floor(Math.random() * array.length)]
     }
 }
 
