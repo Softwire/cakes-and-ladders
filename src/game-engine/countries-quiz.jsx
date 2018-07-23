@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import QuizInterface from "./quiz-interface";
+import QuizInterface from "./quiz-interface.jsx";
 
 class CountriesQuiz extends Component {
     constructor(props) {
