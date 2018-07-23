@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class LeechDeepFryer extends Component {
     constructor(props) {
@@ -10,14 +10,14 @@ class LeechDeepFryer extends Component {
         this.StartDeepFry = this.StartDeepFry.bind(this);
     }
 
-    StartDeepFry=()=>{
+    StartDeepFry = () => {
 
-        this.setState( {
+        this.setState({
             message: "Deep frying in progress..."
         });
-        setTimeout( () => {
+        setTimeout(() => {
 
-            this.setState( {
+            this.setState({
                 message: "Deep frying complete. Enjoy your deep fried leech!"
             });
 
@@ -30,9 +30,14 @@ class LeechDeepFryer extends Component {
 
     render() {
         return (
-            <div className="main-container">
-                <p>{this.state.message}</p>
-                <button onClick={this.StartDeepFry}>DEEP FRY</button>
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h1>Leech Factory</h1>
+                        <p>{this.state.message}</p>
+                        <button type="button" className="btn btn-primary" onClick={this.StartDeepFry}>Deep Fry</button>
+                    </div>
+                </div>
             </div>
         );
     }
