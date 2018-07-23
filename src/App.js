@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
+import Snake from './Snake.js';
 
 class App extends Component {
   render() {
