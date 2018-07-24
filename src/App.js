@@ -5,6 +5,7 @@ import RobinsElement from './RobinsElement.jsx';
 import JoelGame from "./Snek/snekboard.js";
 import Snake from './Snake.js';
 import Etch from './etch-a-sketch/App.js';
+import DisplayBattle from './intern-battle-royale';
 
 class App extends Component {
     render() {
@@ -36,6 +37,7 @@ class App extends Component {
                 </div>
                 <div id="Kate" className="tabcontent">
                     <h1> Kate </h1>
+					<DisplayBattle />
                 </div>
                 <div id="Ant" className="tabcontent">
                     <h1> Ant </h1>
