@@ -57,11 +57,13 @@ class JoelGame extends React.Component {
             lastDirection: 38,
             highscore: 0,
             gameState: 1,
+            dynamite: [10,10],
         };
         this.moveSnake = this.moveSnake.bind(this);
         this.startGame = this.startGame.bind(this);
         this.setDirection = this.setDirection.bind(this);
-        this.moveFood = this.moveFood.bind(this);
+        this.placeFood = this.placeFood.bind(this);
+        this.gameOver = this.gameOver.bind(this);
     }
 
     startGame(){
@@ -70,7 +72,8 @@ class JoelGame extends React.Component {
             direction: 39,
             gameState: 1,
         });
-        this.moveFood();
+        this.placeFood();
+        this.placeDynamite();
         this.moveSnakeInterval = setInterval(this.moveSnake,120);
     }
 
@@ -107,7 +110,7 @@ class JoelGame extends React.Component {
         newSnake = newSnake.concat(oldSnake.slice(0,oldSnake.length-1));
         if(this.checkIfAteFood(newSnake)){
             newSnake.push(oldSnake.slice(-1)[0])
-            this.moveFood();
+            this.placeFood();
         }
         return newSnake;
     }
@@ -125,11 +128,11 @@ class JoelGame extends React.Component {
 
     gameOver(){
         clearTimeout(this.moveSnakeInterval);
+        clearTimeout(this.dynamiteTimeout);
         this.setState({
             gameState:0,
         });
         this.updateBoard();
-        alert("Game Ova");
     }
 
     getNextMoveFromDirection(direction){
@@ -155,8 +158,8 @@ class JoelGame extends React.Component {
         return newSnake;
     }
 
-    moveFood(){
-        if (this.moveFoodTimeout) clearTimeout(this.moveFoodTimeout);
+    placeFood(){
+        if (this.foodTimeout) clearTimeout(this.foodTimeout);
         var newFood;
         do{
             const x = Math.floor(Math.random()*boardSize);
@@ -164,35 +167,49 @@ class JoelGame extends React.Component {
             newFood = [x,y];}
         while(!this.checkNoOverlap(newFood,this.state.snake))
         this.setState({food:newFood});
-        this.moveFoodTimeout = setTimeout(this.moveFood,5000);
+        this.foodTimeout = setTimeout(this.placeFood,5000);
     }
 
-    moveFoodTo(arr){
-        if (this.moveFoodTimeout) clearTimeout(this.moveFoodTimeout);
-        var newFood;
-        do{
-            const x = Math.floor(Math.random()*boardSize);
-            const y = Math.floor(Math.random()*boardSize);
-            newFood = [x,y];}
-        while(!this.checkNoOverlap(newFood,this.state.snake))
-        this.setState({food:newFood});
-        this.moveFoodTimeout = setTimeout(this.moveFood,5000);
+    placeDynamite() {
+        if (this.dynamiteTimeout) clearTimeout(this.dynamiteTimeout);
+        var newDynamite;
+        do {
+            const x = Math.floor(Math.random() * boardSize);
+            const y = Math.floor(Math.random() * boardSize);
+            newDynamite = [x, y];
+        }
+        while (!this.checkNoOverlap(newDynamite, this.state.snake))
+        this.setState({dynamite: newDynamite});
+        this.dynamiteTimeout = setTimeout(this.gameOver, 10000);
+    }
+
+    defuseDynamite(arr){
+        if (arr[0] === this.state.dynamite[0] && arr[1] === this.state.dynamite[1]){
+            this.placeDynamite();
+        }
+    }
+
+    handleClick(arr){
+        this.defuseDynamite(arr);
     }
 
     updateBoard(){
         this.updateHighScore();
-        this.updateSnakeFoodPosition();
+        this.updateSnakeFoodDynamitePosition();
         var snakeLength= this.state.snake.length;
         if(snakeLength %5 ===0){this.updateDifficulty(snakeLength)};
     }
 
-    updateSnakeFoodPosition(){
+    updateSnakeFoodDynamitePosition(){
         var currentSquares = Array.from(Array(boardSize), () => new Array(boardSize));
         const snakeBody = this.state.gameState ? "O" : "D";
         const snakeHead = this.state.gameState ? "H" : "DH";
+        const dynamite = this.state.gameState ? "DYN" : "BOOM";
         this.state.snake.forEach(x => {currentSquares[x[0]][x[1]] = snakeBody});
         var food = this.state.food;
-        currentSquares[food[0]][food[1]] = "X";
+        var Dynamite = this.state.dynamite;
+        currentSquares[food[0]][food[1]] = "F";
+        currentSquares[Dynamite[0]][Dynamite[1]] = dynamite;
         currentSquares[this.state.snake[0][0]][this.state.snake[0][1]] = snakeHead;
         this.setState({squares : currentSquares, });
     }

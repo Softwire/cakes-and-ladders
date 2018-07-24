@@ -43,7 +43,7 @@ button[value = "H"]{
 }
 
 
-button[value="X"]{
+button[value="F"]{
     background: saddlebrown;
     font-size: 0px;
 }
@@ -58,6 +58,16 @@ button[value = "DH"]{
     font-size: 0px;
 }
 
+button[value = "DYN"]{
+    background: orangered;
+    font-size: 8px;
+}
+
+button[value = "BOOM"]{
+    background: orangered;
+    font-size: 6px;
+
+}
 
 .square:focus {
     outline: none;
