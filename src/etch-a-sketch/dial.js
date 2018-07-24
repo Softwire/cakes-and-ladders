@@ -9,7 +9,8 @@ class Dial extends React.Component {
         this.state = {
             angle: Math.PI,
             lastAngle: Math.PI,
-            startAngle: Math.PI
+            startAngle: Math.PI,
+            mouseActive: false
         };
 
         this.dial = React.createRef();
@@ -20,6 +21,23 @@ class Dial extends React.Component {
         const touch = e.targetTouches[0];
         if (touch !== null) {
             this.startMovement(touch.clientX, touch.clientY);
+        }
+    }
+
+    handleMouseDown = (e) => {
+        if (e !== null) {
+            this.setState({
+                mouseActive: true
+            });
+            this.startMovement(e.clientX, e.clientY);
+        }
+    }
+
+    handleMouseUp = (e) => {
+        if (e !== null) {
+            this.setState({
+                mouseActive: false
+            });
         }
     }
 
@@ -43,6 +61,12 @@ class Dial extends React.Component {
         const touch = e.targetTouches[0];
         if (touch !== null) {
             this.doMovement(touch.clientX, touch.clientY);
+        }
+    }
+
+    handleMouseMove = (e) => {
+        if(this.state.mouseActive && e !== null) {
+            this.doMovement(e.clientX, e.clientY);
         }
     }
     
@@ -94,6 +118,9 @@ class Dial extends React.Component {
                 className="dial"
                 onTouchMove={this.handleTouchMove}
                 onTouchStart={this.handleTouchStart}
+                onMouseDown={this.handleMouseDown}
+                onMouseUp={this.handleMouseUp}
+                onMouseMove={this.handleMouseMove}
             >
                 <svg width={radius*2} height={radius*2}>
                     <ellipse ref={this.dial}
