@@ -37,3 +37,13 @@
   padding: 0;
   width: 20px;
 }
+
+.wall-square {
+    background: #814f27;
+    /*border: 1px solid #F00;*/
+    float: left;
+    height: 20px;
+    /*margin: -1px;*/
+    padding: 0;
+    width: 20px;
+}
