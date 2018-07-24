@@ -124,7 +124,7 @@ class DisplayBattle extends React.Component {
             this.runNeutralEncounter(survivingInterns);
         } else if (random <= 75) {
             this.runDeadlyEncounter(survivingInterns);
-        } else if (random <= 99) {
+        } else if (random <= 98) {
             this.runAccidentEncounter(survivingInterns);
         } else {
             this.runReviveEncounter(survivingInterns);
