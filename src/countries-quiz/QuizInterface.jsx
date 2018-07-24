@@ -1,41 +1,11 @@
 import React, {Component} from 'react';
+import OptionButton from "./OptionButton";
 
-const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
 
 function Flag(props) {
     return (
         <img className="flag-image" src={props.value}/>
     );
-}
-
-class OptionButton extends Component {
-
-    render() {
-        let buttonStyle = OptionButton.getButtonStyle(this.props.value.buttonState);
-
-        return (
-            <button
-                type="button"
-                className={"col btn m-2 p-4 flex-0 option-button " + buttonStyle}
-                key={this.props.value.content.alpha3Code}
-                onClick={this.props.handleClick}>
-                {this.props.value.content.name}
-            </button>
-        );
-    }
-
-    static getButtonStyle(state) {
-        switch (state) {
-            case buttonState.UNSELECTED:
-                return "btn-primary";
-            case buttonState.WRONG:
-                return "btn-secondary";
-            case buttonState.CORRECT:
-                return "btn-success";
-            case buttonState.SELECTED:
-                return "btn-danger";
-        }
-    }
 }
 
 class QuizInterface extends Component {
@@ -55,7 +25,7 @@ class QuizInterface extends Component {
                     <OptionButton value={this.props.answerOptions[2]}
                                   handleClick={() => this.props.handleClick(2)}/>
                     <OptionButton value={this.props.answerOptions[3]}
-                                  handleClick={() =>this. props.handleClick(3)}/>
+                                  handleClick={() => this.props.handleClick(3)}/>
                 </div>
             </React.Fragment>
         )

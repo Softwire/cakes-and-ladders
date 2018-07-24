@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import CountriesQuiz from "./countries-quiz/countries-quiz.jsx";
+import CountriesQuiz from "./countries-quiz/CountriesQuiz.jsx";
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
 import JoelGame from "./snekboard.js";

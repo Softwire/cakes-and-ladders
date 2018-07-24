@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './css/countries-quiz.css';
-import QuizInterface from "./quiz-interface.jsx";
+import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
