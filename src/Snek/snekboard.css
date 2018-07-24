@@ -43,10 +43,30 @@ button[value = "H"]{
 }
 
 
+button[value="F"]{
+    background: saddlebrown;
+    font-size: 0px;
+}
 
-button[value="X"]{
+button[value = "D"]{
     background: crimson;
     font-size: 0px;
+}
+
+button[value = "DH"]{
+    background: darkred;
+    font-size: 0px;
+}
+
+button[value = "DYN"]{
+    background: orangered;
+    font-size: 8px;
+}
+
+button[value = "BOOM"]{
+    background: orangered;
+    font-size: 6px;
+
 }
 
 .square:focus {
