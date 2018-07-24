@@ -120,7 +120,7 @@ class Snake extends Component {
 
   render() {
     var cells = [];
-    var cellSize = 20;
+    var cellSize = 18;
 
     for (var row = 0; row < numRows; row++) {
       for (var col = 0; col < numCols; col++) {
