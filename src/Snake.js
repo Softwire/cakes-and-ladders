@@ -118,18 +118,27 @@ class Snake extends Component {
     }
   }
 
-  render() {
+  // renderRow(numRow)
+  // {
+  //   var row = [];
+  //   for (var i = 0; i < numCols; i++) {
+  //     row.push(<div className={this.state.board[numRow * numCols + i] + '-square'}/>);
+  //   }
+  //   return (
+  //       <div className="board-row">
+  //           {row}
+  //           </div>);
+  // }
+
+   render() {
     var cells = [];
-    var cellSize = 18;
+    var cellSize = 20;
 
     for (var row = 0; row < numRows; row++) {
       for (var col = 0; col < numCols; col++) {
-        cells.push(<div class={this.state.board[row * numRows + col] + '-square'} />)
+        cells.push(<div class={this.state.board[row * numCols + col] + '-square'} />)
       }
     }
-
-    var width = numCols * cellSize;
-    var height = numRows * cellSize;
 
     return (
       <div class="snake-game">
@@ -143,6 +152,22 @@ class Snake extends Component {
         </div>
       </div>
     );
+    //
+    //   var rows = [];
+    //   for (var i = 0; i < numRows; i++) {
+    //     rows.push(this.renderRow(i))
+    //   }
+    //   return (
+    //       <div
+    //           className="snake-game"
+    //           onKeyDown={this._handleKey.bind(this)}
+    //       >
+    //           <h1 className="snake-score">Length: {this.state.snake.length}</h1>
+    //       <div
+    //         ref="board">
+    //         {rows}
+    //       </div>
+    //       </div>);
   }
 }
 
