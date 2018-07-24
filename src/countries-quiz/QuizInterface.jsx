@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import OptionButton from "./OptionButton";
+import Timer from "./Timer";
 
 
 function Flag(props) {
@@ -16,6 +17,10 @@ class QuizInterface extends Component {
                     <div className="col">
                         <h1>Countries Quiz</h1>
                     </div>
+                    <Timer
+                        countDownFrom={10}
+                        gameEnded={false}
+                    />
                 </div>
                 <div className="row">
                     <Flag value={this.props.answerOptions[this.props.answerIndex].content.flag}/>

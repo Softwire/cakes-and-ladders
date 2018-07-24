@@ -3,7 +3,7 @@ import React from "react";
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {currentCount: props.countdownFrom}
+        this.state = {currentCount: props.countDownFrom}
     }
 
     timer() {
@@ -26,9 +26,7 @@ class Timer extends React.Component {
 
     render() {
         return (
-            <div
-                className="clockText"
-            >
+            <div className="col">
                 Time remaining:{this.state.currentCount}
             </div>
         );
