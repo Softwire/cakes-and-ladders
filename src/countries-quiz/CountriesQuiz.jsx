@@ -3,8 +3,9 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
+const questionsPerLevel = 5;
 const timePerLevel = 30;
-const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
+const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
 
 class CountriesQuiz extends Component {
 
@@ -15,6 +16,7 @@ class CountriesQuiz extends Component {
             answerOptions: null,
             answerIndex: -1,
             isLoadingNewQuestion: false,
+            levelScore: 0,
         };
 
         this.selectOption = this.selectOption.bind(this);
@@ -35,6 +37,7 @@ class CountriesQuiz extends Component {
     render() {
 
         if (this.state.answerIndex === -1) return (<p className="m-5">Loading...</p>);
+        let progress = (this.state.levelScore / questionsPerLevel * 100) + "%";
 
         return (
             <QuizInterface
@@ -43,6 +46,7 @@ class CountriesQuiz extends Component {
                 handleClick={this.selectOption}
                 timePerLevel={timePerLevel}
                 endGame={this.endGame}
+                progress={progress}
             />
         );
     }
@@ -78,7 +82,16 @@ class CountriesQuiz extends Component {
         answerOptions[selectIndex].buttonState = buttonState.SELECTED;
         answerOptions[answerIndex].buttonState = buttonState.CORRECT;
 
-        this.setState({answerOptions: answerOptions, isLoadingNewQuestion: true});
+        let levelScore = this.state.levelScore;
+        if (selectIndex === answerIndex) {
+            levelScore++;
+        }
+
+        this.setState({
+            answerOptions: answerOptions,
+            isLoadingNewQuestion: true,
+            levelScore: levelScore
+        });
 
         setTimeout(() => {
             this.loadNewQuestion();
