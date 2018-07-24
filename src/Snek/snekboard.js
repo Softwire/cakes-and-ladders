@@ -58,6 +58,7 @@ class JoelGame extends React.Component {
             highscore: 0,
             gameState: 1,
             dynamite: [10,10],
+            dynamiteState: 1,
         };
         this.moveSnake = this.moveSnake.bind(this);
         this.startGame = this.startGame.bind(this);
@@ -163,6 +164,7 @@ class JoelGame extends React.Component {
         clearTimeout(this.moveSnakeInterval);
         this.setState({
             gameState:0,
+            dynamiteState:1,
         });
         this.updateBoard();
     }
@@ -213,7 +215,7 @@ class JoelGame extends React.Component {
         var currentSquares = Array.from(Array(boardSize), () => new Array(boardSize));
         const snakeBody = this.state.gameState ? "O" : "D";
         const snakeHead = this.state.gameState ? "H" : "DH";
-        const dynamite = this.state.gameState ? "DYN" : "BOOM";
+        const dynamite = this.state.dynamiteState ? "DYN" : "BOOM";
         this.state.snake.forEach(x => {currentSquares[x[0]][x[1]] = snakeBody});
         var food = this.state.food;
         var Dynamite = this.state.dynamite;
