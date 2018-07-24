@@ -4,6 +4,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+#title {
+    width: 9em;
+}
+
 .flag-image {
     height: 20em;
     margin: 3em auto 3.5em;
@@ -17,4 +21,15 @@ body {
     letter-spacing: 0.25em;
     text-overflow: ellipsis;
     border-radius: 1em;
+}
+
+.levels {
+    font-weight: 700;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    text-overflow: ellipsis;
+    border-radius: 1em;
+    text-align: center;
+    opacity: 0.3;
 }

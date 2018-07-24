@@ -9,14 +9,30 @@ function Flag(props) {
     );
 }
 
+function Level(props) {
+    return (
+        <div className="col">
+            <h2 className="levels">1</h2>
+        </div>
+    );
+}
+
 class QuizInterface extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row mt-2">
-                    <div className="col">
-                        <h1>Countries Quiz</h1>
+                <div className="row mt-2 align-items-center align-content-center justify-content-center">
+                    <div className="col flex-shrink-0">
+                        <h1 id="title">Countries Quiz</h1>
                     </div>
+                    <div className="col">
+                        <h2 className="levels">Level</h2>
+                    </div>
+                    <Level />
+                    <Level />
+                    <Level />
+                    <Level />
+                    <Level />
                     <Timer
                         countDownFrom={this.props.timePerLevel}
                         endGame={this.props.endGame}
