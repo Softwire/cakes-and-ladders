@@ -3,9 +3,10 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
-const questionsPerLevel = 2;
+const maxQuestionsPerLevel = 6;
 const numberOfLevels = 5;
 const timePerLevel = 30;
+const timeBetweenQuestions = 1000;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
 const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2, CONTINUE: 3};
 
@@ -96,11 +97,11 @@ class CountriesQuiz extends Component {
         setTimeout(() => {
             if (this.state.gameState === gameState.IN_PROGRESS)
                 this.loadNewQuestion();
-        }, 2500);
+        }, timeBetweenQuestions);
     }
 
     getQuestionsNumberRequired() {
-        return this.state.level + 1;
+        return Math.min(this.state.level + 1, maxQuestionsPerLevel);
     }
 
     getNewLevelScore(selectIndex, answerIndex) {
