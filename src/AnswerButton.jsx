@@ -5,11 +5,6 @@ class AnswerButton extends React.Component {
 
     constructor(props) {
       super(props);
-      this.handleClick = this.handleClick.bind(this);
-    }
-  
-    handleClick() {
-      this.props.buttonClicked(this.props.type)
     }
   
     buttonStyle = {
@@ -18,9 +13,10 @@ class AnswerButton extends React.Component {
       };
   
     render() {
+      let buttonID = this.props.type
       return (
           <button
-            onClick={this.handleClick.bind(this)}
+            onClick={this.props.action.bind(this,buttonID)}
             style = {this.buttonStyle}
             className="buttonText"
           >
