@@ -50,8 +50,7 @@ class RobinsElement extends React.Component {
     return(
       <div>
         <p>
-          In this game, you will have {this.state.timeAllowed} seconds to complete as many rounds as possible. <br/>
-          In each round, all you need to do is click the bigger number. <br/>
+          In each round, all you need to do is click the bigger number. Watch out though: the amount of time you have to complete each round decreases as you get further...<br/>
           See how far you can get in this monstrously exciting game! 
         </p>
         <button
