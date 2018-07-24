@@ -72,30 +72,38 @@ class CountriesQuiz extends Component {
 
         if (this.state.isLoadingNewQuestion) return;
 
-        let answerOptions = this.state.answerOptions;
         let answerIndex = this.state.answerIndex;
+        let answerOptions = this.getAnswerOptionsWithNewButtonStates(this.state.answerOptions, selectIndex, answerIndex);
 
+        let levelScore = this.getNewLevelScore(selectIndex, answerIndex);
+
+        this.setState({
+            answerOptions: answerOptions,
+            isLoadingNewQuestion: true,
+            levelScore: levelScore,
+        });
+
+        setTimeout(() => {
+            this.loadNewQuestion();
+        }, 2500);
+    }
+
+    getNewLevelScore(selectIndex, answerIndex) {
+        let levelScore = this.state.levelScore;
+        if (selectIndex === answerIndex) {
+            levelScore++;
+        }
+        return levelScore;
+    }
+
+    getAnswerOptionsWithNewButtonStates(answerOptions, selectIndex, answerIndex) {
         answerOptions = answerOptions.map(option => {
             option.buttonState = buttonState.WRONG;
             return option;
         });
         answerOptions[selectIndex].buttonState = buttonState.SELECTED;
         answerOptions[answerIndex].buttonState = buttonState.CORRECT;
-
-        let levelScore = this.state.levelScore;
-        if (selectIndex === answerIndex) {
-            levelScore++;
-        }
-
-        this.setState({
-            answerOptions: answerOptions,
-            isLoadingNewQuestion: true,
-            levelScore: levelScore
-        });
-
-        setTimeout(() => {
-            this.loadNewQuestion();
-        }, 2500);
+        return answerOptions;
     }
 
     endGame() {

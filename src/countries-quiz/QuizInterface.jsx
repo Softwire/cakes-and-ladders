@@ -22,7 +22,7 @@ class QuizInterface extends Component {
         return (
             <div className="container">
                 <div className="progress">
-                    <div className="progress-bar progress-bar-striped bg-info progress-bar-animated" style={{width: this.props.progress}}/>
+                    <div className="progress-bar progress-bar-striped bg-success progress-bar-animated" style={{width: this.props.progress}}/>
                 </div>
                 <div className="row mt-4 align-items-center align-content-center justify-content-center">
                     <div className="col flex-shrink-0">
