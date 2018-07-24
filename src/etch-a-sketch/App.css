@@ -1,0 +1,30 @@
+#App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dials {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+button {
+    margin-top: 1em;
+    padding: 0.7em 1em;
+}
+
+.canvasContainer {
+    position: relative;
+}
+
+.etch-mark {
+    position: absolute;
+}

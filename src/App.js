@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import CountriesQuiz from "./countries-quiz/CountriesQuiz.jsx";
-import './App.css';
 import RobinsElement from './RobinsElement.jsx';
-import JoelGame from "./snekboard.js";
+import JoelGame from "./Snek/snekboard.js";
 import Snake from './Snake.js';
+import Etch from './etch-a-sketch/App.js';
 
 class App extends Component {
   render() {
@@ -39,6 +39,7 @@ class App extends Component {
         </div>
         <div id="Ant" className="tabcontent">
           <h1> Ant </h1>
+          <Etch />
         </div>
         <div id="Charlie" className="tabcontent">
           <h1> Charlie </h1>

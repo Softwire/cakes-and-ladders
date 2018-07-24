@@ -6,7 +6,7 @@ var numCols = 20;
 var initLength = 4;
 var directions = {37: [-1, 0], 38: [0, -1], 39: [1, 0], 40: [0, 1]};
 var nextDir = 39;
-var food = parseInt(Math.random() * numRows * numCols);;
+var food = parseInt(Math.random() * numRows * numCols);
 
 class Snake extends Component {
   constructor(props) {
@@ -16,20 +16,54 @@ class Snake extends Component {
       snake : [],
       dir : 39,
       nextDir : 39,
+        walls : [],
     }
     var snakeHead = ((numRows+1)/2)*numCols;
     var row = parseInt(snakeHead/numCols)
     var col = snakeHead % numCols;
     for(var i=0; i<initLength; i++) {
-      var snakeIndex = row * numCols + (col-i);
-      this.state.snake.push(snakeIndex);
-      this.state.board[snakeIndex] = 'body';
+        var snakeIndex = row * numCols + (col - i);
+        this.state.snake.push(snakeIndex);
+        this.state.board[snakeIndex] = 'body';
     }
-    this.state.board[food] = 'food';
+      while(this.state.board[food] !== 'empty') {
+        food = parseInt(Math.random() * numRows * numCols);
+      }
+      this.state.board[food] = 'food';
+      this.makeWalls(this.state.board, this.state.walls);
   }
 
   componentDidMount() {
     this._resume();
+  }
+
+  makeWalls(board, walls) {
+    var numWalls = parseInt(Math.random() * 5 + 2);
+    for (var i=0; i<numWalls; i++) {
+      var start = parseInt(Math.random() * (numRows*numCols));
+      var direction = Math.random();
+      var length = parseInt(Math.random() * 6 + 2);
+      if(direction < 0.5) {
+        for(var j=0; j<length; j++) {
+          if(board[(start+j)] == 'empty') {
+              board[(start + j)] = 'wall'
+              walls.push(start+j)
+          }
+        }
+      } else {
+          for(var j=0; j<length; j++) {
+              if(board[(start+j*numCols)%(numCols*numRows)] == 'empty') {
+                  board[(start + j * numCols) % (numCols * numRows)] = 'wall'
+                  walls.push((start + j * numCols) % (numCols * numRows))
+              }
+          }
+      }
+    }
+
+    this.setState({
+        board : board,
+        walls : walls
+    })
   }
 
   _resume() {
@@ -39,7 +73,7 @@ class Snake extends Component {
   newFood(board) {
     while(true) {
         food = parseInt(Math.random() * numRows * numCols);
-        if(board[food] != 'body') {
+        if(board[food] == 'empty') {
             board[food] = 'food';
             break;
         }
@@ -93,6 +127,11 @@ class Snake extends Component {
       }
       next.push(snake[i]);
     }
+
+    if(this.state.walls.indexOf(next[0]) >= 0) {
+      this.gameOver(snake, board);
+      isDead = true;
+    }
     
     if(!isDead) {
       board[snake[snake.length-1]] = 'empty';
@@ -118,18 +157,15 @@ class Snake extends Component {
     }
   }
 
-  render() {
+   render() {
     var cells = [];
     var cellSize = 20;
 
     for (var row = 0; row < numRows; row++) {
       for (var col = 0; col < numCols; col++) {
-        cells.push(<div class={this.state.board[row * numRows + col] + '-square'} />)
+        cells.push(<div class={this.state.board[row * numCols + col] + '-square'} />)
       }
     }
-
-    var width = numCols * cellSize;
-    var height = numRows * cellSize;
 
     return (
       <div class="snake-game">
