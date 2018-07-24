@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import OptionButton from "./OptionButton";
 import Timer from "./Timer";
 
-const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2};
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2, CONTINUE: 3};
 
 function Flag(props) {
     return (
@@ -74,6 +74,17 @@ class QuizInterface extends Component {
                             className="col btn m-2 p-4 flex-0 option-button btn-danger"
                             onClick={this.props.onContinueButtonClick}>
                             Restart
+                        </button>
+                    </div>
+                );
+            case gameState.CONTINUE:
+                return (
+                    <div className="row">
+                        <button
+                            type="button"
+                            className="col btn m-2 p-4 flex-0 option-button btn-success"
+                            onClick={this.props.onContinueButtonClick}>
+                            Continue
                         </button>
                     </div>
                 );

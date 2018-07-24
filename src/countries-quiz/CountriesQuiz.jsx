@@ -3,11 +3,11 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
-const questionsPerLevel = 5;
+const questionsPerLevel = 2;
 const numberOfLevels = 5;
-const timePerLevel = 3;
+const timePerLevel = 30;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
-const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2};
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2, CONTINUE: 3};
 
 class CountriesQuiz extends Component {
 
@@ -82,11 +82,13 @@ class CountriesQuiz extends Component {
         let answerOptions = this.getAnswerOptionsWithNewButtonStates(this.state.answerOptions, selectIndex, answerIndex);
 
         let levelScore = this.getNewLevelScore(selectIndex, answerIndex);
+        let currentGameState = levelScore >= questionsPerLevel ? gameState.CONTINUE : gameState.IN_PROGRESS;
 
         this.setState({
             answerOptions: answerOptions,
             isLoadingNewQuestion: true,
             levelScore: levelScore,
+            gameState: currentGameState,
         });
 
         setTimeout(() => {
@@ -133,11 +135,14 @@ class CountriesQuiz extends Component {
                     gameState: gameState.IN_PROGRESS,
                 });
                 break;
+            case gameState.CONTINUE:
+                this.loadNewQuestion();
+                this.setState({
+                    gameState: gameState.IN_PROGRESS,
+                    levelScore: 0,
+                });
+                break;
         }
-    }
-
-    showContinueButton() {
-        return this.state.gameState !== gameState.IN_PROGRESS;
     }
 
     getNRandomCountries(numberOfCountries) {
