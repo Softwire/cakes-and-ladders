@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './Snake.css';
 
-var numRows = 20;
-var numCols = 20;
-var initLength = 4;
-var directions = {37: [-1, 0], 38: [0, -1], 39: [1, 0], 40: [0, 1]};
+const numRows = 20;
+const numCols = 20;
+const initLength = 4;
+const directions = {37: [-1, 0], 38: [0, -1], 39: [1, 0], 40: [0, 1]};
 var nextDir = 39;
-var food = parseInt(Math.random() * numRows * numCols);
 
 class Snake extends Component {
   constructor(props) {
@@ -15,226 +14,205 @@ class Snake extends Component {
       board : Array(numRows*numCols).fill('empty'),
       snake : [],
       dir : 39,
-      nextDir : 39,
-        walls : [],
-    }
-    var snakeHead = ((numRows+1)/2)*numCols;
-    var row = parseInt(snakeHead/numCols)
-    var col = snakeHead % numCols;
-    for(var i=0; i<initLength; i++) {
-        var snakeIndex = row * numCols + (col - i);
-        this.state.snake.push(snakeIndex);
-        this.state.board[snakeIndex] = 'body';
-    }
-      while(this.state.board[food] !== 'empty') {
-        food = parseInt(Math.random() * numRows * numCols);
-      }
-      this.state.board[food] = 'food';
-      this.makeWalls(this.state.board, this.state.walls);
-      this._resume = this._resume.bind(this);
+      walls : [],
+      food : 0,
+    };
+    // var snakeHead = ((numRows+1)/2)*numCols;
+    // var row = parseInt(snakeHead/numCols)
+    // var col = snakeHead % numCols;
+    // for(var i=0; i<initLength; i++) {
+    //     var snakeIndex = row * numCols + (col - i);
+    //     this.state.snake.push(snakeIndex);
+    //     this.state.board[snakeIndex] = 'body';
+    // }
+    //
+    // let food = this.newFood(this.state.board);
+    //
+    // this.state.board[food] = 'food';
+    // let walls = this.makeWalls(this.state.board, this.state.walls);
+    // for(let i=0; i<walls.length; i++) {
+    //     this.state.board[walls[i]] = 'wall';
+    // }
+
+    this._resume = this._resume.bind(this);
     this.makeWalls = this.makeWalls.bind(this);
     this._tick = this._tick.bind(this);
-    this.newFood = this.newFood.bind(this);
     this._handleKey = this._handleKey.bind(this);
     this.gameOver = this.gameOver.bind(this);
+    this.setupBoard = this.setupBoard.bind(this);
   }
 
   // componentDidMount() {
   //   this._resume();
   // }
 
-  makeWalls(board, walls) {
-    var numWalls = parseInt(Math.random() * 5 + 2);
-    for (var i=0; i<numWalls; i++) {
-      var start = parseInt(Math.random() * (numRows*numCols));
-      var direction = Math.random();
-      var length = parseInt(Math.random() * 6 + 2);
-      if(direction < 0.5) {
-        for(var j=0; j<length; j++) {
-          if(board[(start+j)] == 'empty') {
-              board[(start + j)] = 'wall'
-              walls.push(start+j)
-          }
-        }
-      } else {
-          for(var j=0; j<length; j++) {
-              if(board[(start+j*numCols)%(numCols*numRows)] == 'empty') {
-                  board[(start + j * numCols) % (numCols * numRows)] = 'wall'
-                  walls.push((start + j * numCols) % (numCols * numRows))
-              }
-          }
+    setupBoard() {
+      let board = Array(numRows*numCols).fill('empty');
+      let snake = [];
+      let dir = 39;
+      let walls = [];
+
+      let snakeHead = ((numRows+1)/2)*numCols;
+      let coord = this.to2d(snakeHead);
+
+      for(let i=0; i<initLength; i++) {
+          let snakeIndex = coord[1] * numCols + (coord[0] - i);
+          snake.push(snakeIndex);
+          board[snakeIndex] = 'body';
       }
+
+      let food = this.newFood(board);
+      board[food] = 'food';
+
+      walls = this.makeWalls(board, walls);
+
+      for(let i=0; i<walls.length; i++) {
+        board[walls[i]] = 'wall';
+      }
+
+      nextDir = dir;
+
+      this.setState({
+          board : board,
+          snake : snake,
+          dir : dir,
+          walls : walls,
+          food : food,
+      });
     }
 
-    this.setState({
-        board : board,
-        walls : walls
-    })
+  makeWalls(board, walls) {
+    let numWalls = parseInt(Math.random() * 5 + 2);
+
+    for (let i=0; i<numWalls; i++) {
+
+      let start = parseInt(Math.random() * (numRows*numCols));
+      let direction = Math.random();
+      let length = parseInt(Math.random() * 6 + 2);
+      if(direction < 0.5) {
+        for(let j=0; j<length; j++) {
+          if(board[(start+j)] === 'empty') walls.push(start+j);
+        }
+      } else {
+        for(let j=0; j<length; j++) {
+          if(board[(start+j*numCols)%(numCols*numRows)] === 'empty') walls.push((start + j * numCols) % (numCols * numRows));
+        }
+      }
+    }
+    return walls;
   }
 
   _resume() {
-      //
-      // var board = Array(numRows*numCols).fill('empty');
-      // var snake = [];
-      // var walls = [];
-      // var snakeHead = ((numRows+1)/2)*numCols;
-      // var row = parseInt(snakeHead/numCols)
-      // var col = snakeHead % numCols;
-      // for(var i=0; i<initLength; i++) {
-      //     var snakeIndex = row * numCols + (col - i);
-      //     snake.push(snakeIndex);
-      //     board[snakeIndex] = 'body';
-      // }
-      // while(board[food] !== 'empty') {
-      //     food = parseInt(Math.random() * numRows * numCols);
-      // }
-      // board[food] = 'food';
-      //
-      // var numWalls = parseInt(Math.random() * 5 + 2);
-      // for (var i=0; i<numWalls; i++) {
-      //     var start = parseInt(Math.random() * (numRows*numCols));
-      //     var direction = Math.random();
-      //     var length = parseInt(Math.random() * 6 + 2);
-      //     if(direction < 0.5) {
-      //         for(var j=0; j<length; j++) {
-      //             if(board[(start+j)] == 'empty') {
-      //                 board[(start + j)] = 'wall'
-      //                 walls.push(start+j)
-      //             }
-      //         }
-      //     } else {
-      //         for(var j=0; j<length; j++) {
-      //             if(board[(start+j*numCols)%(numCols*numRows)] == 'empty') {
-      //                 board[(start + j * numCols) % (numCols * numRows)] = 'wall'
-      //                 walls.push((start + j * numCols) % (numCols * numRows))
-      //             }
-      //         }
-      //     }
-      // }
-      //
-      // console.log("setting state");
-      //
-      // this.setState({
-      //     board: board,
-      //     snake : snake,
-      //     dir : 39,
-      //     nextDir: 39,
-      //     walls: walls
-      // });
-
       this._tick();
   }
-  
+
   newFood(board) {
-    while(true) {
-        food = parseInt(Math.random() * numRows * numCols);
-        if(board[food] == 'empty') {
-            board[food] = 'food';
-            break;
-        }
-    }
+      let food = parseInt(Math.random() * numRows * numCols);
+      while(board[food] !== 'empty') {
+          food = parseInt(Math.random() * numRows * numCols);
+      }
+      return food;
   }
 
   to2d(coord) {
-    var coord2d = [];
+    let coord2d = [];
+
     coord2d[0] = coord%numCols;
     coord2d[1] = parseInt(coord/numCols);
+
     return coord2d;
   }
 
   gameOver(snake, board) {
-    for(var i=0; i<snake.length; i++) {
+    for(let i=0; i<snake.length; i++) {
       board[snake[i]] = 'dead';
     }
   }
 
   _tick() {
-    var snake = this.state.snake;
-    var board = this.state.board;
-    var snakehead = snake[0];
+    let snake = this.state.snake;
+    let board = this.state.board;
+    let walls = this.state.walls;
+    let snakehead = snake[0];
+    let food = this.state.food;
 
-    var move = directions[nextDir];
-    var coord2d = this.to2d(snakehead);
-    var nextCol = (coord2d[0]+move[0]);
-    var nextRow = (coord2d[1]+move[1]);
+    let move = directions[nextDir];
+    let coord2d = this.to2d(snakehead);
+    let nextCol = (coord2d[0]+move[0]);
+    let nextRow = (coord2d[1]+move[1]);
 
     // if(nextCol < 0 || nextCol >= numCols) nextCol = (this.state.dir == 37) ? numCols-1 : 0;
     // if(nextRow < 0) nextRow = numRows -1;
 
-      var next = [(nextRow * numCols + nextCol)];
+      let next = [(nextRow * numCols + nextCol)];
 
-      var isDead = false;
-      if(nextCol < 0 || nextCol >= numCols || nextRow < 0 || nextRow >= numRows) {
-        this.gameOver(snake, board);
+      let len;
+      if (next[0] === food) {
+          len = snake.length;
+          food = this.newFood(board);
+          board[food] = 'food';
+      } else {
+          len = snake.length - 1;
+      }
+
+      let isDead = false;
+
+      if(nextCol < 0 || nextCol >= numCols || nextRow < 0 || nextRow >= numRows || walls.indexOf(next[0]) >= 0 || (snake.indexOf(next[0]) >=0 && snake.indexOf(next[0]) < len)) {
         isDead = true;
       } else {
-          var len;
-          if (next == food) {
-              len = snake.length;
-              this.newFood(board);
-          } else {
-              len = snake.length - 1;
-          }
-
-          for (var i = 0; i < len; i++) {
-              if (snake[i] == next[0]) {
-                  this.gameOver(snake, board)
-                  isDead = true;
-                  break;
-              }
+          for (let i = 0; i < len; i++) {
               next.push(snake[i]);
-          }
-
-          if (this.state.walls.indexOf(next[0]) >= 0) {
-              this.gameOver(snake, board);
-              isDead = true;
           }
       }
     
     if(!isDead) {
       board[snake[snake.length-1]] = 'empty';
       board[next[0]] = 'body';
+    } else {
+      this.gameOver(snake, board);
     }
 
     this.setState({
       snake : next,
       board : board,
       dir : nextDir,
-    })
+      food : food,
+    });
   
     if(!isDead) setTimeout(this._tick.bind(this), 100);
   }
 
   _handleKey(props) {
-    console.log('handling key');
-    var direction = props.nativeEvent.keyCode;
-    console.log('init: ' + this.state.dir + ' next: ' + direction);
-    var diff = Math.abs(this.state.dir - direction)
-    if(directions[direction] && diff != 0 && diff != 2) {
-      nextDir = direction;
-    }
+    let direction = props.nativeEvent.keyCode;
+
+    let diff = Math.abs(this.state.dir - direction);
+
+    if(directions[direction] && diff !== 0 && diff !== 2) nextDir = direction;
   }
 
-   render() {
-    var cells = [];
-    var cellSize = 20;
+  render() {
+    let cells = [];
+    let cellSize = 20;
 
-    for (var row = 0; row < numRows; row++) {
-      for (var col = 0; col < numCols; col++) {
-        cells.push(<div class={this.state.board[row * numCols + col] + '-square'} />)
+    for (let row = 0; row < numRows; row++) {
+      for (let col = 0; col < numCols; col++) {
+        cells.push(<div className={this.state.board[row * numCols + col] + '-square'} />)
       }
     }
 
     return (
-      <div class="snake-game">
-        <h1 class="snake-score">Length: {this.state.snake.length}</h1>
+      <div className="snake-game">
+        <h1 className="snake-score">Length: {this.state.snake.length}</h1>
         <div
           ref="board"
           tabIndex={0}
           onKeyDown={this._handleKey.bind(this)}
           style={{width: numCols * cellSize, height: numRows * cellSize}}>
           {cells}
-            <ul> <button onClick = {() => {this._resume()}}> Start Game </button></ul>
+            <ul>
+                <button onClick = {() => {this.setupBoard()}}> Setup Board </button>
+                <button onClick = {() => {this._resume()}}> Start Game </button>
+            </ul>
         </div>
       </div>
     );
