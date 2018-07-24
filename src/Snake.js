@@ -31,11 +31,17 @@ class Snake extends Component {
       }
       this.state.board[food] = 'food';
       this.makeWalls(this.state.board, this.state.walls);
+      this._resume = this._resume.bind(this);
+    this.makeWalls = this.makeWalls.bind(this);
+    this._tick = this._tick.bind(this);
+    this.newFood = this.newFood.bind(this);
+    this._handleKey = this._handleKey.bind(this);
+    this.gameOver = this.gameOver.bind(this);
   }
 
-  componentDidMount() {
-    this._resume();
-  }
+  // componentDidMount() {
+  //   this._resume();
+  // }
 
   makeWalls(board, walls) {
     var numWalls = parseInt(Math.random() * 5 + 2);
@@ -67,7 +73,56 @@ class Snake extends Component {
   }
 
   _resume() {
-    this._tick();
+      //
+      // var board = Array(numRows*numCols).fill('empty');
+      // var snake = [];
+      // var walls = [];
+      // var snakeHead = ((numRows+1)/2)*numCols;
+      // var row = parseInt(snakeHead/numCols)
+      // var col = snakeHead % numCols;
+      // for(var i=0; i<initLength; i++) {
+      //     var snakeIndex = row * numCols + (col - i);
+      //     snake.push(snakeIndex);
+      //     board[snakeIndex] = 'body';
+      // }
+      // while(board[food] !== 'empty') {
+      //     food = parseInt(Math.random() * numRows * numCols);
+      // }
+      // board[food] = 'food';
+      //
+      // var numWalls = parseInt(Math.random() * 5 + 2);
+      // for (var i=0; i<numWalls; i++) {
+      //     var start = parseInt(Math.random() * (numRows*numCols));
+      //     var direction = Math.random();
+      //     var length = parseInt(Math.random() * 6 + 2);
+      //     if(direction < 0.5) {
+      //         for(var j=0; j<length; j++) {
+      //             if(board[(start+j)] == 'empty') {
+      //                 board[(start + j)] = 'wall'
+      //                 walls.push(start+j)
+      //             }
+      //         }
+      //     } else {
+      //         for(var j=0; j<length; j++) {
+      //             if(board[(start+j*numCols)%(numCols*numRows)] == 'empty') {
+      //                 board[(start + j * numCols) % (numCols * numRows)] = 'wall'
+      //                 walls.push((start + j * numCols) % (numCols * numRows))
+      //             }
+      //         }
+      //     }
+      // }
+      //
+      // console.log("setting state");
+      //
+      // this.setState({
+      //     board: board,
+      //     snake : snake,
+      //     dir : 39,
+      //     nextDir: 39,
+      //     walls: walls
+      // });
+
+      this._tick();
   }
   
   newFood(board) {
@@ -81,14 +136,13 @@ class Snake extends Component {
   }
 
   to2d(coord) {
-    var coord2d = []
+    var coord2d = [];
     coord2d[0] = coord%numCols;
     coord2d[1] = parseInt(coord/numCols);
     return coord2d;
   }
 
   gameOver(snake, board) {
-    alert('Game over, please refresh')
     for(var i=0; i<snake.length; i++) {
       board[snake[i]] = 'dead';
     }
@@ -104,34 +158,38 @@ class Snake extends Component {
     var nextCol = (coord2d[0]+move[0]);
     var nextRow = (coord2d[1]+move[1]);
 
-    if(nextCol < 0 || nextCol >= numCols) nextCol = (this.state.dir == 37) ? numCols-1 : 0;
-    if(nextRow < 0) nextRow = numRows -1;
+    // if(nextCol < 0 || nextCol >= numCols) nextCol = (this.state.dir == 37) ? numCols-1 : 0;
+    // if(nextRow < 0) nextRow = numRows -1;
 
-    var next = [(nextRow*numCols + nextCol)%400];
+      var next = [(nextRow * numCols + nextCol)];
 
-    var len;
-    if(next == food) {
-      len = snake.length;
-      this.newFood(board);
-    } else {
-      len = snake.length-1;
-    }
-    
-    var isDead = false;
-
-    for(var i=0; i<len; i++) {
-      if(snake[i] == next[0]){
-        this.gameOver(snake, board)
+      var isDead = false;
+      if(nextCol < 0 || nextCol >= numCols || nextRow < 0 || nextRow >= numRows) {
+        this.gameOver(snake, board);
         isDead = true;
-        break;
-      }
-      next.push(snake[i]);
-    }
+      } else {
+          var len;
+          if (next == food) {
+              len = snake.length;
+              this.newFood(board);
+          } else {
+              len = snake.length - 1;
+          }
 
-    if(this.state.walls.indexOf(next[0]) >= 0) {
-      this.gameOver(snake, board);
-      isDead = true;
-    }
+          for (var i = 0; i < len; i++) {
+              if (snake[i] == next[0]) {
+                  this.gameOver(snake, board)
+                  isDead = true;
+                  break;
+              }
+              next.push(snake[i]);
+          }
+
+          if (this.state.walls.indexOf(next[0]) >= 0) {
+              this.gameOver(snake, board);
+              isDead = true;
+          }
+      }
     
     if(!isDead) {
       board[snake[snake.length-1]] = 'empty';
@@ -176,6 +234,7 @@ class Snake extends Component {
           onKeyDown={this._handleKey.bind(this)}
           style={{width: numCols * cellSize, height: numRows * cellSize}}>
           {cells}
+            <ul> <button onClick = {() => {this._resume()}}> Start Game </button></ul>
         </div>
       </div>
     );
