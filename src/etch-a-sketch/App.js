@@ -100,8 +100,8 @@ class App extends React.Component {
     render() {
         return (
             <div id="App">
+                <p>it's cooler with a touchscreen 😎</p>
                 <div className="canvasContainer">
-                    <p>it's cooler with a touchscreen 😎</p>
                     <canvas width="500" height="300" ref={this.canvas} />
                     <img src={Mark}
                         className="etch-mark"
