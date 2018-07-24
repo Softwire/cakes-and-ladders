@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import QuizInterface from "./QuizInterface";
 
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
 
