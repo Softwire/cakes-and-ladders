@@ -1,6 +1,5 @@
 import React from 'react';
 import './snekboard.css';
-import Dynamite from "./Dynamite";
 
 const boardSize = 15;
 
@@ -8,6 +7,7 @@ function Square(props){
     return(
         <button
             className= "square" value = {props.value}
+            onClick = {props.onClick}
         >
             {props.value}
         </button>
@@ -19,6 +19,7 @@ class Board extends React.Component {
         return (
             <Square
                 value={this.props.squares[i][j]}
+                onClick = {()=>this.props.onClick([i,j])}
             />
         );
     }
@@ -67,6 +68,7 @@ class JoelGame extends React.Component {
         this.setState({
             snake: [[5,5],[4,5]],
             direction: 39,
+            gameState: 1,
         });
         this.moveFood();
         this.moveSnakeInterval = setInterval(this.moveSnake,120);
@@ -77,10 +79,12 @@ class JoelGame extends React.Component {
         var newSnake = this.getNextMoveFromDirection(this.state.direction);
         newSnake = this.disallowReverse(newSnake,oldSnake);
         newSnake = this.shiftSnake(newSnake,oldSnake);
-        this.setState({ snake: newSnake });
 
-        if(this.invalidMove()){ this.gameOver(); }
-        else{ this.updateBoard(); }
+        if(this.invalidMove(newSnake)){ this.gameOver(); }
+        else{
+            this.setState({ snake: newSnake })
+            this.updateBoard();
+        }
     }
 
     setDirection({ keyCode }) {
@@ -108,8 +112,8 @@ class JoelGame extends React.Component {
         return newSnake;
     }
 
-    invalidMove(){
-        return !this.checkInBoard(this.state.snake) || !this.checkNoOverlap(this.state.snake[0], this.state.snake.slice(1));
+    invalidMove(newSnake){
+        return !this.checkInBoard(newSnake) || !this.checkNoOverlap(newSnake[0], newSnake.slice(1));
     }
 
     disallowReverse(newSnake,oldSnake){
@@ -120,12 +124,12 @@ class JoelGame extends React.Component {
     }
 
     gameOver(){
-        alert("Game Ova");
         clearTimeout(this.moveSnakeInterval);
         this.setState({
-            snake:[],
             gameState:0,
         });
+        this.updateBoard();
+        alert("Game Ova");
     }
 
     getNextMoveFromDirection(direction){
@@ -163,15 +167,29 @@ class JoelGame extends React.Component {
         this.moveFoodTimeout = setTimeout(this.moveFood,5000);
     }
 
+    moveFoodTo(arr){
+        if (this.moveFoodTimeout) clearTimeout(this.moveFoodTimeout);
+        var newFood;
+        do{
+            const x = Math.floor(Math.random()*boardSize);
+            const y = Math.floor(Math.random()*boardSize);
+            newFood = [x,y];}
+        while(!this.checkNoOverlap(newFood,this.state.snake))
+        this.setState({food:newFood});
+        this.moveFoodTimeout = setTimeout(this.moveFood,5000);
+    }
+
     updateBoard(){
         this.updateHighScore();
         this.updateSnakeFoodPosition();
+        var snakeLength= this.state.snake.length;
+        if(snakeLength %5 ===0){this.updateDifficulty(snakeLength)};
     }
 
     updateSnakeFoodPosition(){
         var currentSquares = Array.from(Array(boardSize), () => new Array(boardSize));
         const snakeBody = this.state.gameState ? "O" : "D";
-        const snakeHead = this.state.gameState ? "H" : "D";
+        const snakeHead = this.state.gameState ? "H" : "DH";
         this.state.snake.forEach(x => {currentSquares[x[0]][x[1]] = snakeBody});
         var food = this.state.food;
         currentSquares[food[0]][food[1]] = "X";
@@ -183,6 +201,11 @@ class JoelGame extends React.Component {
         var newHighscore = this.state.highscore< this.state.snake.length ?
             this.state.snake.length : this.state.highscore;
         this.setState({ highscore: newHighscore,});
+    }
+
+    updateDifficulty(length){
+        clearInterval(this.moveSnakeInterval);
+        this.moveSnakeInterval = setInterval(this.moveSnake ,Math.max(120-2*length,30));
     }
 
     checkIfAteFood(newSnake){
@@ -205,9 +228,10 @@ class JoelGame extends React.Component {
     render() {
         return (
             <div className="game" onKeyDown={this.setDirection}>
-                <div className="game-board"  >
+                <div className="game-board">
                     <Board
                         squares = {this.state.squares}
+                        onClick={x => this.handleClick(x)}
                     />
                 </div>
                 <ul> Highscore: {this.state.highscore}</ul>

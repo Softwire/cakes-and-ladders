@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import CountriesQuiz from "./countries-quiz/CountriesQuiz.jsx";
-import './App.css';
 import RobinsElement from './RobinsElement.jsx';
-import JoelGame from "./snekboard.js";
+import JoelGame from "./Snek/snekboard.js";
 import Snake from './Snake.js';
 
 class App extends Component {
