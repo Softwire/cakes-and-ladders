@@ -40,9 +40,9 @@ class RobinsElement extends React.Component {
     MainDisplay() {
       if(this.state.firstRunning === true)
         return this.InitialDisplay()
-      while(this.state.gameRunning === true)
+      else if(this.state.gameRunning === true)
         return this.GameRunningDisplay()
-      while(this.state.gameRunning === false)
+      else if(this.state.gameRunning === false)
         return this.GameEndedDisplay()
     }
 
@@ -68,7 +68,7 @@ class RobinsElement extends React.Component {
       <div>
         <p>Click the button displaying the higher number. </p>
         <p><i> The current high score is round {this.state.highScore} </i></p>
-        <p>You have completed {this.state.completedRounds} round{this.state.completedRounds === 1 ? '':'s'}.</p>
+        <p>You have completed {this.state.completedRounds} round{this.state.completedRounds === 1 ? '':'s'}. You have {this.state.timeAllowed.toFixed(2)} seconds for each round.</p>
         <AnswerButton
           action = {this.handlerAnswerButton}
           type = 'left'
@@ -141,7 +141,6 @@ class RobinsElement extends React.Component {
       let currentScore = Math.max(this.state.completedRounds,1)
       let new_time = 5/(Math.sqrt(currentScore));
       this.setState({timeAllowed:new_time})
-      console.log("new time is " + new_time)
     }
 
     UpdateRounds() {
@@ -163,6 +162,7 @@ class RobinsElement extends React.Component {
           <this.EndMessage
             yourScore = {this.state.completedRounds}
             highScore = {this.state.highScore}
+            scoreInSeconds = {this.state.timeAllowed.toFixed(2)}
           />
           <button
             onClick={this.StartNewGame.bind(this)}
@@ -174,7 +174,7 @@ class RobinsElement extends React.Component {
     EndMessage(props) {
       return(
           <div>
-              <p> GAME OVER. You got to round {props.yourScore}. </p>
+              <p> GAME OVER. You got to round {props.yourScore} ({props.scoreInSeconds} seconds) </p>
               <p> The current high score is round {props.highScore}. </p>
           </div>
       );
