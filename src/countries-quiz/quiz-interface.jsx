@@ -17,9 +17,9 @@ class OptionButton extends Component {
             <button
                 type="button"
                 className={"col btn m-2 p-4 flex-0 option-button " + buttonStyle}
-                key={this.props.value.alpha3Code}
+                key={this.props.value.content.alpha3Code}
                 onClick={this.props.handleClick}>
-                {this.props.value.name}
+                {this.props.value.content.name}
             </button>
         );
     }
@@ -43,23 +43,19 @@ class QuizInterface extends Component {
         return (
             <React.Fragment>
                 <div className="row">
-                    <Flag value={this.props.answerOptions[this.props.answerIndex].flag}/>
+                    <Flag value={this.props.answerOptions[this.props.answerIndex].content.flag}/>
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.answerOptions[0]}
-                                  handleClick={() => this.props.handleClick(0)}
-                                  isShowingAnswer={this.props.isShowingAnswer}/>
+                                  handleClick={() => this.props.handleClick(0)}/>
                     <OptionButton value={this.props.answerOptions[1]}
-                                  handleClick={() => this.props.handleClick(1)}
-                                  isShowingAnswer={this.props.isShowingAnswer}/>
+                                  handleClick={() => this.props.handleClick(1)}/>
                 </div>
                 <div className="row">
                     <OptionButton value={this.props.answerOptions[2]}
-                                  handleClick={() => this.props.handleClick(2)}
-                                  isShowingAnswer={this.props.isShowingAnswer}/>
+                                  handleClick={() => this.props.handleClick(2)}/>
                     <OptionButton value={this.props.answerOptions[3]}
-                                  handleClick={() =>this. props.handleClick(3)}
-                                  isShowingAnswer={this.props.isShowingAnswer}/>
+                                  handleClick={() =>this. props.handleClick(3)}/>
                 </div>
             </React.Fragment>
         )

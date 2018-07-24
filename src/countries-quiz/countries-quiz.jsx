@@ -51,9 +51,12 @@ class CountriesQuiz extends Component {
     }
 
     loadNewQuestion() {
-        let answerOptions = this.getNRandomCountries(optionCount).map(country => {
-            country.buttonState = buttonState.UNSELECTED;
-            return country;
+        let randomCountries = this.getNRandomCountries(optionCount);
+        let answerOptions = randomCountries.map(country => {
+            let answerOption = {};
+            answerOption.content = country;
+            answerOption.buttonState = buttonState.UNSELECTED;
+            return answerOption;
         });
         let answerIndex = Math.floor(Math.random() * optionCount);
 
