@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import CountriesQuiz from "./countries-quiz/CountriesQuiz.jsx";
+import './App.css';
 import RobinsElement from './RobinsElement.jsx';
 import JoelGame from "./snekboard.js";
 import Snake from './Snake.js';
@@ -30,6 +32,7 @@ class App extends Component {
         </div>
         <div id="Eric" className="tabcontent">
           <h1> Eric </h1>
+            <CountriesQuiz/>
         </div>
         <div id="Kate" className="tabcontent">
           <h1> Kate </h1>

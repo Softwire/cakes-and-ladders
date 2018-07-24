@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.flag-image {
+    height: 20em;
+    margin: 3em auto 3.5em;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.15);
+}
+
+.option-button {
+    font-weight: 700;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    text-overflow: ellipsis;
+    border-radius: 1em;
+}
