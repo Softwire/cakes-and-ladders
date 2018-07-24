@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0549126b-a7c3-4d0b-8ac7-a60bfadadc99" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/snekboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/snekboard.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +26,29 @@
       <file leaf-file-name="snekboard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/snekboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+            <state relative-caret-position="242">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="n#!!block;n#setDirection#0;n#Game#0" />
+                <element signature="n#!!block;n#Square#0" />
+                <element signature="n#Board#0" />
+                <element signature="n#!!block;n#constructor#0;n#Board#0" />
+                <element signature="n#!!block;n#startGame#0;n#Game#0" />
+                <element signature="n#!!block;n#moveSnake#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#setDirection#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#shiftSnake#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#invalidMove#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#disallowReverse#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#gameOver#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#getNextMoveFromDirection#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#moveFood#0;n#Game#0" />
+                <element signature="n#!!block;n#updateBoard#0;n#Game#0" />
+                <element signature="n#!!block;n#updateSnakePosition#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#updateHighScore#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkIfAteFood#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkInBoard#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkNoOverlap#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#render#0;n#Game#0" />
               </folding>
             </state>
           </provider>
@@ -114,9 +131,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="957" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
     <option name="height" value="1167" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -237,15 +254,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532103293399</updated>
-      <workItem from="1532103298104" duration="28665000" />
+      <workItem from="1532103298104" duration="31642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28665000" />
+    <option name="totallyTimeSpent" value="31642000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="957" height="1167" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
@@ -257,11 +274,11 @@
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49895614" visible="true" weight="0.32889733" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49895614" visible="true" weight="0.32610744" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19341126" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.094791666" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -285,7 +302,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -356,11 +373,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snekboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+        <state relative-caret-position="242">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="n#!!block;n#setDirection#0;n#Game#0" />
+            <element signature="n#!!block;n#Square#0" />
+            <element signature="n#Board#0" />
+            <element signature="n#!!block;n#constructor#0;n#Board#0" />
+            <element signature="n#!!block;n#startGame#0;n#Game#0" />
+            <element signature="n#!!block;n#moveSnake#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#setDirection#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#shiftSnake#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#invalidMove#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#disallowReverse#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#gameOver#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#getNextMoveFromDirection#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#moveFood#0;n#Game#0" />
+            <element signature="n#!!block;n#updateBoard#0;n#Game#0" />
+            <element signature="n#!!block;n#updateSnakePosition#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#updateHighScore#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkIfAteFood#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkInBoard#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkNoOverlap#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#render#0;n#Game#0" />
           </folding>
         </state>
       </provider>
