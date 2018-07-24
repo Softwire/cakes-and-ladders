@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './countries-quiz/css/App.css';
+import './App.css';
 import CountriesQuiz from "./countries-quiz/countries-quiz.jsx";
 import './App.css';
 import RobinsElement from './RobinsElement.jsx';
