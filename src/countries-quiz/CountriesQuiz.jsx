@@ -4,6 +4,7 @@ import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
 const questionsPerLevel = 5;
+const numberOfLevels = 5;
 const timePerLevel = 30;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
 const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1,};
@@ -27,11 +28,11 @@ class CountriesQuiz extends Component {
     }
 
     componentDidMount() {
-        fetch('https://restcountries.eu/rest/v2/all?fields=alpha3Code;name;flag')
+        fetch('https://restcountries.eu/rest/v2/all?fields=alpha3Code;name;flag;area')
             .then(response => response.json())
-            .then(data => {
+            .then(countries => {
                 this.setState({
-                    allCountries: data,
+                    allCountries: countries,
                 });
                 this.loadNewQuestion();
             });
