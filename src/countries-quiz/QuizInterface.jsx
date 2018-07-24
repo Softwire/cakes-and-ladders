@@ -11,7 +11,12 @@ function Flag(props) {
 class QuizInterface extends Component {
     render() {
         return (
-            <React.Fragment>
+            <div className="container">
+                <div className="row mt-5">
+                    <div className="col">
+                        <h1>Countries Quiz</h1>
+                    </div>
+                </div>
                 <div className="row">
                     <Flag value={this.props.answerOptions[this.props.answerIndex].content.flag}/>
                 </div>
@@ -27,7 +32,7 @@ class QuizInterface extends Component {
                     <OptionButton value={this.props.answerOptions[3]}
                                   handleClick={() => this.props.handleClick(3)}/>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }

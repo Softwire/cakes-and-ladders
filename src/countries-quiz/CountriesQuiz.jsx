@@ -35,18 +35,11 @@ class CountriesQuiz extends Component {
         if (this.state.answerIndex === -1) return (<p className="m-5">Loading...</p>);
 
         return (
-            <div className="container">
-                <div className="row mt-5">
-                    <div className="col">
-                        <h1>Countries Quiz</h1>
-                    </div>
-                </div>
-                <QuizInterface
-                    answerOptions={this.state.answerOptions}
-                    answerIndex={this.state.answerIndex}
-                    handleClick={this.selectOption}
-                />
-            </div>
+            <QuizInterface
+                answerOptions={this.state.answerOptions}
+                answerIndex={this.state.answerIndex}
+                handleClick={this.selectOption}
+            />
         );
     }
 
