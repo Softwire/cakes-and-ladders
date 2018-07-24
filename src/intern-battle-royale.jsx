@@ -7,9 +7,9 @@ var events = [" deep fried ",
     " pulled a scary face at ",
     " beat ",
     " pretended to run away from ",
-    " baited ",
+    " confused ",
     " beat ",
-    " made curry for ",
+    " made chickpea curry for ",
     " drank all the coffee, and there was none left for ",
     " ensnared "];
 var eventsEnd = [".",
@@ -18,7 +18,7 @@ var eventsEnd = [".",
     ", who died of fright.",
     " in a deadly dance off.",
     " only to lead them into a trap!",
-    " like a matador.",
+    " with labyrinthine Github structures.",
     " to the lunch queue.",
     " but it was poisoned!",
     ".",
@@ -38,7 +38,7 @@ var NeventsEnd = [".",
     " sat down for a nice cup for tea.",
     " agreed to disagree.",
     " sat down together and had a bit of a break.",
-    "."]
+    ", and it was very effective."]
 var outputEvents = [];
 
 class DisplayBattle extends React.Component {
