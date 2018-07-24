@@ -13,7 +13,7 @@ class QuizInterface extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row mt-5">
+                <div className="row mt-2">
                     <div className="col">
                         <h1>Countries Quiz</h1>
                     </div>

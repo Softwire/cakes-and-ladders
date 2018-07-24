@@ -25,10 +25,21 @@ class Timer extends React.Component {
     }
 
     render() {
+
+        let textStyle = null;
+        let currentCount = this.state.currentCount;
+
+        if (currentCount < 5)
+            textStyle = "text-danger";
+        else if (currentCount < 10)
+            textStyle = "text-warning";
+        else
+            textStyle = "text-primary";
+
         return (
-            <div className="col">
+            <h1 className={"col timer text-right " + textStyle}>
                 {this.state.currentCount}
-            </div>
+            </h1>
         );
     }
 }

@@ -3,7 +3,7 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
-const timePerLevel = 5;
+const timePerLevel = 30;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
 
 class CountriesQuiz extends Component {
@@ -86,7 +86,6 @@ class CountriesQuiz extends Component {
     }
 
     endGame() {
-        alert("end");
     }
 
     getNRandomCountries(numberOfCountries) {
