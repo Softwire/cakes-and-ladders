@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5dda1e85-cad3-4cc3-a7d4-9dcfa3e1a290" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries-quiz/OptionButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/OptionButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries-quiz/css/countries-quiz.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/css/countries-quiz.css" afterDir="false" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +14,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CountriesQuiz.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+              <folding>
+                <element signature="n#!!block;n#constructor#0;n#CountriesQuiz#0" />
+                <element signature="e#484#725#0" />
+                <element signature="n#!!block;n#componentDidMount#0;n#CountriesQuiz#0" />
+                <element signature="e#1108#1260#0" />
+                <element signature="e#1140#1204#0" />
+                <element signature="n#!!block;n#render#0;n#CountriesQuiz#0" />
+                <element signature="e#1499#1962#0" />
+                <element signature="n#!!block;n#loadNewQuestion#0;n#CountriesQuiz#0" />
+                <element signature="e#2133#2319#0" />
+                <element signature="e#2412#2544#0" />
+                <element signature="e#3036#3206#0" />
+                <element signature="e#3235#3350#0" />
+                <element signature="n#!!block;n#getNewLevelScore#0;n#CountriesQuiz#0" />
+                <element signature="e#3583#3620#0" />
+                <element signature="n#!!block;n#getAnswerOptionsWithNewButtonStates#0;n#CountriesQuiz#0" />
+                <element signature="e#3790#3880#0" />
+                <element signature="n#!!block;n#endGame#0;n#CountriesQuiz#0" />
+                <element signature="e#4099#4149#0" />
+                <element signature="e#4682#4959#0" />
+                <element signature="e#4777#4934#0" />
+                <element signature="n#!!block;n#getNRandomCountries#0;n#CountriesQuiz#0" />
+                <element signature="e#5094#5337#0" />
+                <element signature="e#5228#5327#0" />
+                <element signature="n#!!block;n#getRandomFrom#0;n#CountriesQuiz#0" />
               </folding>
             </state>
           </provider>
@@ -40,6 +80,8 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" />
       </list>
     </option>
   </component>
@@ -73,7 +115,18 @@
             <path>
               <item name="cakes-and-ladders" type="b2602c69:ProjectViewProjectNode" />
               <item name="cakes-and-ladders" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cakes-and-ladders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cakes-and-ladders" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cakes-and-ladders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cakes-and-ladders" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="countries-quiz" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -258,10 +311,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197000" />
+    <option name="totallyTimeSpent" value="1338000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1909" y="-1208" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Messages" weight="0.32987747" />
@@ -330,13 +384,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logo.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/leech-deepfryer.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -546,16 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/countries-quiz/Timer.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -574,20 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#getNRandomCountries#0;n#CountriesQuiz#0" />
-            <element signature="e#2563#2806#0" />
-            <element signature="e#2697#2796#0" />
-            <element signature="n#!!block;n#getRandomFrom#0;n#CountriesQuiz#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -613,6 +636,56 @@
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-629">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#CountriesQuiz#0" />
+            <element signature="e#484#725#0" />
+            <element signature="n#!!block;n#componentDidMount#0;n#CountriesQuiz#0" />
+            <element signature="e#1108#1260#0" />
+            <element signature="e#1140#1204#0" />
+            <element signature="n#!!block;n#render#0;n#CountriesQuiz#0" />
+            <element signature="e#1499#1962#0" />
+            <element signature="n#!!block;n#loadNewQuestion#0;n#CountriesQuiz#0" />
+            <element signature="e#2133#2319#0" />
+            <element signature="e#2412#2544#0" />
+            <element signature="e#3036#3206#0" />
+            <element signature="e#3235#3350#0" />
+            <element signature="n#!!block;n#getNewLevelScore#0;n#CountriesQuiz#0" />
+            <element signature="e#3583#3620#0" />
+            <element signature="n#!!block;n#getAnswerOptionsWithNewButtonStates#0;n#CountriesQuiz#0" />
+            <element signature="e#3790#3880#0" />
+            <element signature="n#!!block;n#endGame#0;n#CountriesQuiz#0" />
+            <element signature="e#4099#4149#0" />
+            <element signature="e#4682#4959#0" />
+            <element signature="e#4777#4934#0" />
+            <element signature="n#!!block;n#getNRandomCountries#0;n#CountriesQuiz#0" />
+            <element signature="e#5094#5337#0" />
+            <element signature="e#5228#5327#0" />
+            <element signature="n#!!block;n#getRandomFrom#0;n#CountriesQuiz#0" />
           </folding>
         </state>
       </provider>
