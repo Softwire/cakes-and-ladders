@@ -6,6 +6,7 @@ const optionCount = 4;
 const questionsPerLevel = 5;
 const timePerLevel = 30;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1,};
 
 class CountriesQuiz extends Component {
 
@@ -17,10 +18,12 @@ class CountriesQuiz extends Component {
             answerIndex: -1,
             isLoadingNewQuestion: false,
             levelScore: 0,
+            gameState: gameState.NOT_STARTED,
         };
 
         this.selectOption = this.selectOption.bind(this);
         this.endGame = this.endGame.bind(this);
+        this.onContinueButtonClick = this.onContinueButtonClick.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +50,8 @@ class CountriesQuiz extends Component {
                 timePerLevel={timePerLevel}
                 endGame={this.endGame}
                 progress={progress}
+                showContinueButton={this.showContinueButton()}
+                onContinueButtonClick={this.onContinueButtonClick}
             />
         );
     }
@@ -107,6 +112,21 @@ class CountriesQuiz extends Component {
     }
 
     endGame() {
+    }
+
+    onContinueButtonClick() {
+        switch (this.state.gameState) {
+            case gameState.NOT_STARTED:
+                this.loadNewQuestion();
+                this.setState({
+                    gameState: gameState.IN_PROGRESS,
+                });
+                break;
+        }
+    }
+
+    showContinueButton() {
+        return this.state.gameState !== gameState.IN_PROGRESS;
     }
 
     getNRandomCountries(numberOfCountries) {

@@ -22,7 +22,8 @@ class QuizInterface extends Component {
         return (
             <div className="container">
                 <div className="progress">
-                    <div className="progress-bar progress-bar-striped bg-success progress-bar-animated" style={{width: this.props.progress}}/>
+                    <div className="progress-bar progress-bar-striped bg-success progress-bar-animated"
+                         style={{width: this.props.progress}}/>
                 </div>
                 <div className="row mt-4 align-items-center align-content-center justify-content-center">
                     <div className="col flex-shrink-0">
@@ -44,20 +45,41 @@ class QuizInterface extends Component {
                 <div className="row">
                     <Flag value={this.props.answerOptions[this.props.answerIndex].content.flag}/>
                 </div>
-                <div className="row">
-                    <OptionButton value={this.props.answerOptions[0]}
-                                  handleClick={() => this.props.handleClick(0)}/>
-                    <OptionButton value={this.props.answerOptions[1]}
-                                  handleClick={() => this.props.handleClick(1)}/>
-                </div>
-                <div className="row">
-                    <OptionButton value={this.props.answerOptions[2]}
-                                  handleClick={() => this.props.handleClick(2)}/>
-                    <OptionButton value={this.props.answerOptions[3]}
-                                  handleClick={() => this.props.handleClick(3)}/>
-                </div>
+                {this.getOptionButtons()}
             </div>
         )
+    }
+
+    getOptionButtons() {
+        if (this.props.showContinueButton) {
+            return (
+                <div className="row">
+                    <button
+                        type="button"
+                        className="col btn m-2 p-4 flex-0 option-button btn-success"
+                        onClick={this.props.onContinueButtonClick}>
+                        Ready
+                    </button>
+                </div>
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    <div className="row">
+                        <OptionButton value={this.props.answerOptions[0]}
+                                      handleClick={() => this.props.handleClick(0)}/>
+                        <OptionButton value={this.props.answerOptions[1]}
+                                      handleClick={() => this.props.handleClick(1)}/>
+                    </div>
+                    <div className="row">
+                        <OptionButton value={this.props.answerOptions[2]}
+                                      handleClick={() => this.props.handleClick(2)}/>
+                        <OptionButton value={this.props.answerOptions[3]}
+                                      handleClick={() => this.props.handleClick(3)}/>
+                    </div>
+                </React.Fragment>
+            )
+        }
     }
 }
 
