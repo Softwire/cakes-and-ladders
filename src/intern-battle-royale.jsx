@@ -27,11 +27,17 @@ var Nevents = [" ran away from ",
     " temporarily teamed up with ",
     " chose to leave ",
     " and ",
+    " and ",
+    " and ",
+    " and ",
     " threw something shiny to distract "]
 var NeventsEnd = [".",
     ".",
     " alone, for now.",
     " decided to call it a draw.",
+    " sat down for a nice cup for tea.",
+    " agreed to disagree.",
+    " sat down together and had a bit of a break.",
     "."]
 var outputEvents = [];
 
@@ -62,10 +68,12 @@ class DisplayBattle extends React.Component {
     }
 
     render() {
-        return (<div> <div>
+        var divStyle = {borderWidth: 1, borderStyle: 'solid', borderColor: 'black', width: 300, height: 500, float: 'left', overflow: 'auto', padding: 10}
+
+        return (<div> <div style={divStyle}>
             <p> How many interns are going to battle? <input type="text" onChange={this.updateNumber.bind(this)} /> </p> 
             {this.createList()}
-            <button onClick={this.runBattle.bind(this)}> Go </button></div> <div>
+            <button onClick={this.runBattle.bind(this)}> Go </button></div> <div style={divStyle} >
             {outputEvents} </div></div>);
     }
 
@@ -98,8 +106,8 @@ class DisplayBattle extends React.Component {
     }
 
     runEncounter(survivingInterns) {
-        var random = Math.floor(Math.random() * 4);
-        if (random <= 2) {
+        var random = Math.floor(Math.random() * 3);
+        if (random <= 1) {
             this.runNeutralEncounter(survivingInterns);
         } else {
             this.runDeadlyEncounter(survivingInterns);
