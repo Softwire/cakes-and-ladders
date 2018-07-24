@@ -1,9 +1,58 @@
-.buttonText {
+.buttonText0 {
     font-size: 30px;
     background-color: #4CAF50;
     border-radius: 8px;
 }
 
-.buttonText:hover {
+.buttonText0:hover {
     background-color: #52BE80 ;
+}
+
+.buttonText1 {
+    font-size: 30px;
+    background-color: #E74C3C;
+    border-radius: 8px;
+}
+
+.buttonText1:hover {
+    background-color: #EC7063 ;
+}
+
+.buttonText2 {
+    font-size: 30px;
+    background-color: #D7BDE2;
+    border-radius: 8px;
+}
+
+.buttonText2:hover {
+    background-color:  #E8DAEF;
+}
+.buttonText3 {
+    font-size: 30px;
+    background-color: #F1C40F;
+    border-radius: 8px;
+}
+
+.buttonText3:hover {
+    background-color: #F7DC6F ;
+}
+
+.buttonText4 {
+    font-size: 30px;
+    background-color: #85C1E9;
+    border-radius: 8px;
+}
+
+.buttonText4:hover {
+    background-color: #3498DB   ;
+}
+
+.buttonText5 {
+    font-size: 30px;
+    background-color: #F5CBA7;
+    border-radius: 8px;
+}
+
+.buttonText5:hover {
+    background-color: #F5B041;
 }

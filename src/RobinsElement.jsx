@@ -73,11 +73,13 @@ class RobinsElement extends React.Component {
           action = {this.handlerAnswerButton}
           type = 'left'
           value = {this.state.leftButtonValue}
+          roundNumber = {this.state.completedRounds}
         />
         <AnswerButton
           action = {this.handlerAnswerButton}
           type = 'right'
           value = {this.state.rightButtonValue}
+          roundNumber = {this.state.completedRounds}
         />
         <this.StartClock
           countdownFrom = {this.state.timeAllowed}

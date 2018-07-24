@@ -3,7 +3,7 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
-const maxQuestionsPerLevel = 6;
+const maxQuestionsPerLevel = 8;
 const numberOfLevels = 5;
 const timePerLevel = 30;
 const timeBetweenQuestions = 1000;

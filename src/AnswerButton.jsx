@@ -14,11 +14,16 @@ class AnswerButton extends React.Component {
   
     render() {
       let buttonID = this.props.type
+      let roundTens = Math.round((this.props.roundNumber-5)/10)
+      let buttonTypeIndex = roundTens % 5
+      let toBeAppended = buttonTypeIndex.toString()
+      let buttonType = "buttonText" + toBeAppended
+
       return (
           <button
             onClick={this.props.action.bind(this,buttonID)}
             style = {this.buttonStyle}
-            className="buttonText"
+            className={buttonType}
           >
           {this.props.value}
           </button>
