@@ -1,17 +1,39 @@
 import React from "react";
 
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2};
+
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {currentCount: props.countDownFrom}
+        this.state = {
+            currentCount: props.countDownFrom,
+        }
     }
 
     timer() {
+
+        if (this.props.gameState !== gameState.IN_PROGRESS) {
+            this.setState({
+                isStopped: true,
+            });
+            return;
+        }
+
+        if (this.state.isStopped) {
+            this.setState({
+                currentCount: this.props.countDownFrom,
+                isStopped: false,
+            });
+        }
+
         this.setState({
-            currentCount: (this.state.currentCount - 0.1).toFixed(1)
+            currentCount: (this.state.currentCount - 0.1),
         });
         if (this.state.currentCount < 0.1) {
-            clearInterval(this.intervalId);
+            this.setState({
+                currentCount: 0,
+                isStopped: true,
+            });
             this.props.endGame();
         }
     }
@@ -38,7 +60,7 @@ class Timer extends React.Component {
 
         return (
             <h1 className={"col timer text-right " + textStyle}>
-                {this.state.currentCount}
+                {this.state.currentCount.toFixed(1)}
             </h1>
         );
     }

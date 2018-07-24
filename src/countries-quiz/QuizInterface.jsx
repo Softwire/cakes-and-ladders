@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import OptionButton from "./OptionButton";
 import Timer from "./Timer";
 
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2};
 
 function Flag(props) {
     return (
@@ -40,6 +41,7 @@ class QuizInterface extends Component {
                     <Timer
                         countDownFrom={this.props.timePerLevel}
                         endGame={this.props.endGame}
+                        gameState={this.props.gameState}
                     />
                 </div>
                 <div className="row">
@@ -51,34 +53,47 @@ class QuizInterface extends Component {
     }
 
     getOptionButtons() {
-        if (this.props.showContinueButton) {
-            return (
-                <div className="row">
-                    <button
-                        type="button"
-                        className="col btn m-2 p-4 flex-0 option-button btn-success"
-                        onClick={this.props.onContinueButtonClick}>
-                        Ready
-                    </button>
-                </div>
-            )
-        } else {
-            return (
-                <React.Fragment>
+
+        switch(this.props.gameState) {
+            case gameState.NOT_STARTED:
+                return (
                     <div className="row">
-                        <OptionButton value={this.props.answerOptions[0]}
-                                      handleClick={() => this.props.handleClick(0)}/>
-                        <OptionButton value={this.props.answerOptions[1]}
-                                      handleClick={() => this.props.handleClick(1)}/>
+                        <button
+                            type="button"
+                            className="col btn m-2 p-4 flex-0 option-button btn-success"
+                            onClick={this.props.onContinueButtonClick}>
+                            Ready
+                        </button>
                     </div>
+                );
+            case gameState.OVER:
+                return (
                     <div className="row">
-                        <OptionButton value={this.props.answerOptions[2]}
-                                      handleClick={() => this.props.handleClick(2)}/>
-                        <OptionButton value={this.props.answerOptions[3]}
-                                      handleClick={() => this.props.handleClick(3)}/>
+                        <button
+                            type="button"
+                            className="col btn m-2 p-4 flex-0 option-button btn-danger"
+                            onClick={this.props.onContinueButtonClick}>
+                            Restart
+                        </button>
                     </div>
-                </React.Fragment>
-            )
+                );
+            case gameState.IN_PROGRESS:
+                return (
+                    <React.Fragment>
+                        <div className="row">
+                            <OptionButton value={this.props.answerOptions[0]}
+                                          handleClick={() => this.props.handleClick(0)}/>
+                            <OptionButton value={this.props.answerOptions[1]}
+                                          handleClick={() => this.props.handleClick(1)}/>
+                        </div>
+                        <div className="row">
+                            <OptionButton value={this.props.answerOptions[2]}
+                                          handleClick={() => this.props.handleClick(2)}/>
+                            <OptionButton value={this.props.answerOptions[3]}
+                                          handleClick={() => this.props.handleClick(3)}/>
+                        </div>
+                    </React.Fragment>
+                )
         }
     }
 }

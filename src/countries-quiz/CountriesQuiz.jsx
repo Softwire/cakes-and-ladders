@@ -5,9 +5,9 @@ import QuizInterface from "./QuizInterface.jsx";
 const optionCount = 4;
 const questionsPerLevel = 5;
 const numberOfLevels = 5;
-const timePerLevel = 30;
+const timePerLevel = 3;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3};
-const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1,};
+const gameState = {NOT_STARTED: 0, IN_PROGRESS: 1, OVER: 2};
 
 class CountriesQuiz extends Component {
 
@@ -51,8 +51,8 @@ class CountriesQuiz extends Component {
                 timePerLevel={timePerLevel}
                 endGame={this.endGame}
                 progress={progress}
-                showContinueButton={this.showContinueButton()}
                 onContinueButtonClick={this.onContinueButtonClick}
+                gameState={this.state.gameState}
             />
         );
     }
@@ -90,7 +90,8 @@ class CountriesQuiz extends Component {
         });
 
         setTimeout(() => {
-            this.loadNewQuestion();
+            if (this.state.gameState === gameState.IN_PROGRESS)
+                this.loadNewQuestion();
         }, 2500);
     }
 
@@ -113,11 +114,20 @@ class CountriesQuiz extends Component {
     }
 
     endGame() {
+        this.setState({
+            gameState: gameState.OVER,
+        });
     }
 
     onContinueButtonClick() {
         switch (this.state.gameState) {
             case gameState.NOT_STARTED:
+                this.loadNewQuestion();
+                this.setState({
+                    gameState: gameState.IN_PROGRESS,
+                });
+                break;
+            case gameState.OVER:
                 this.loadNewQuestion();
                 this.setState({
                     gameState: gameState.IN_PROGRESS,
