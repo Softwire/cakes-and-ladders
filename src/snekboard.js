@@ -53,27 +53,15 @@ class JoelGame extends React.Component {
             snake: [[5,5]],
             food: [8,8],
             direction: 39,
+            lastDirection: 38,
             highscore: 0,
+            gameState: 1,
         };
         this.moveSnake = this.moveSnake.bind(this);
         this.startGame = this.startGame.bind(this);
         this.setDirection = this.setDirection.bind(this);
         this.moveFood = this.moveFood.bind(this);
     }
-
-
-    setDirection({ keyCode }) {
-        // if it's the same direction or simply reversing, ignore
-        let changeDirection = true;
-        [[38, 40], [37, 39]].forEach(dir => {
-            if (dir.indexOf(this.state.direction) > -1 && dir.indexOf(keyCode) > -1) {
-                changeDirection = false;
-            }
-        });
-
-        if (changeDirection) this.setState({ direction: keyCode });
-    }
-
 
     startGame(){
         this.setState({
@@ -85,8 +73,64 @@ class JoelGame extends React.Component {
     }
 
     moveSnake() {
+        const oldSnake = this.state.snake;
+        var newSnake = this.getNextMoveFromDirection(this.state.direction);
+        newSnake = this.disallowReverse(newSnake,oldSnake);
+        newSnake = this.shiftSnake(newSnake,oldSnake);
+        this.setState({ snake: newSnake });
+
+        if(this.invalidMove()){ this.gameOver(); }
+        else{ this.updateBoard(); }
+    }
+
+    setDirection({ keyCode }) {
+        let changeDirection = true;
+        let lastDirection = this.state.direction;
+        if(![37,38,39,40].includes(keyCode)){ return;}
+        // if it's the same direction or simply reversing, ignore
+        [[38, 40], [37, 39]].forEach(dir => {
+            if (dir.indexOf(this.state.direction) > -1 && dir.indexOf(keyCode) > -1) {
+                changeDirection = false;
+            }
+        });
+        if (changeDirection) this.setState({
+            direction: keyCode ,
+            lastDirection: lastDirection,
+        });
+    }
+
+    shiftSnake(newSnake, oldSnake){
+        newSnake = newSnake.concat(oldSnake.slice(0,oldSnake.length-1));
+        if(this.checkIfAteFood(newSnake)){
+            newSnake.push(oldSnake.slice(-1)[0])
+            this.moveFood();
+        }
+        return newSnake;
+    }
+
+    invalidMove(){
+        return !this.checkInBoard(this.state.snake) || !this.checkNoOverlap(this.state.snake[0], this.state.snake.slice(1));
+    }
+
+    disallowReverse(newSnake,oldSnake){
+        if(!this.checkNoOverlap(newSnake[0],oldSnake)){
+            return this.getNextMoveFromDirection(this.state.lastDirection);
+        }
+        return newSnake;
+    }
+
+    gameOver(){
+        alert("Game Ova");
+        clearTimeout(this.moveSnakeInterval);
+        this.setState({
+            snake:[],
+            gameState:0,
+        });
+    }
+
+    getNextMoveFromDirection(direction){
         var newSnake = [];
-        switch (this.state.direction) {
+        switch (direction) {
             // down
             case 40:
                 newSnake[0] = [this.state.snake[0][0]+1, this.state.snake[0][1] ];
@@ -104,24 +148,41 @@ class JoelGame extends React.Component {
                 newSnake[0] = [this.state.snake[0][0], this.state.snake[0][1] - 1];
                 break;
         }
-        // now shift each "body" segment to the previous segment's position
+        return newSnake;
+    }
 
-        const oldSnake = this.state.snake;
-        newSnake = newSnake.concat(oldSnake.slice(0,oldSnake.length-1));
-        if(this.checkIfAteFood(newSnake)){
-            newSnake.push(oldSnake.slice(-1)[0])
-            this.moveFood();
-        }
-        this.setState({ snake: newSnake });
+    moveFood(){
+        if (this.moveFoodTimeout) clearTimeout(this.moveFoodTimeout);
+        var newFood;
+        do{
+            const x = Math.floor(Math.random()*boardSize);
+            const y = Math.floor(Math.random()*boardSize);
+            newFood = [x,y];}
+        while(!this.checkNoOverlap(newFood,this.state.snake))
+        this.setState({food:newFood});
+        this.moveFoodTimeout = setTimeout(this.moveFood,5000);
+    }
 
-        if(!this.checkInBoard(newSnake) || !this.checkNoOverlap(newSnake[0], newSnake.slice(1))){
-            alert("Game Ova");
-            clearTimeout(this.moveSnakeInterval);
-            this.setState({snake:[]})
-        }
-        else{
-            this.updateBoard();
-        }
+    updateBoard(){
+        this.updateHighScore();
+        this.updateSnakeFoodPosition();
+    }
+
+    updateSnakeFoodPosition(){
+        var currentSquares = Array.from(Array(boardSize), () => new Array(boardSize));
+        const snakeBody = this.state.gameState ? "O" : "D";
+        const snakeHead = this.state.gameState ? "H" : "D";
+        this.state.snake.forEach(x => {currentSquares[x[0]][x[1]] = snakeBody});
+        var food = this.state.food;
+        currentSquares[food[0]][food[1]] = "X";
+        currentSquares[this.state.snake[0][0]][this.state.snake[0][1]] = snakeHead;
+        this.setState({squares : currentSquares, });
+    }
+
+    updateHighScore(){
+        var newHighscore = this.state.highscore< this.state.snake.length ?
+            this.state.snake.length : this.state.highscore;
+        this.setState({ highscore: newHighscore,});
     }
 
     checkIfAteFood(newSnake){
@@ -141,33 +202,6 @@ class JoelGame extends React.Component {
         return bool;
     }
 
-    moveFood(){
-        if (this.moveFoodTimeout) clearTimeout(this.moveFoodTimeout);
-        var newFood;
-        do{
-            const x = Math.floor(Math.random()*boardSize);
-            const y = Math.floor(Math.random()*boardSize);
-            newFood = [x,y];}
-        while(!this.checkNoOverlap(newFood,this.state.snake))
-        this.setState({food:newFood});
-        this.moveFoodTimeout = setTimeout(this.moveFood,5000);
-    }
-
-    updateBoard(){
-        var currentSquares = Array.from(Array(boardSize), () => new Array(boardSize));
-        this.state.snake.forEach(x => {currentSquares[x[0]][x[1]] = "O"});
-        var food = this.state.food;
-        currentSquares[food[0]][food[1]] = "X";
-        currentSquares[this.state.snake[0][0]][this.state.snake[0][1]] = "H";
-        var newHighscore = this.state.highscore< this.state.snake.length ?
-            this.state.snake.length : this.state.highscore;
-        this.setState({
-            squares : currentSquares,
-            highscore: newHighscore,
-        });
-    }
-
-
     render() {
         return (
             <div className="game" onKeyDown={this.setDirection}>
@@ -176,7 +210,7 @@ class JoelGame extends React.Component {
                         squares = {this.state.squares}
                     />
                 </div>
-                <ul>Highscore: {this.state.highscore}</ul>
+                <ul> Highscore: {this.state.highscore}</ul>
                 <ul> <button onClick = {() => {this.startGame()}}> Start Game </button></ul>
             </div>
         );

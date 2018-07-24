@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0549126b-a7c3-4d0b-8ac7-a60bfadadc99" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Snake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.js" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/countries-quiz/OptionButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/countries-quiz/timer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/snekboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/snekboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/countries-quiz/quiz-interface.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/quiz-interface.jsx" afterDir="false" />
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +67,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/countries-quiz/OptionButton.jsx">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state>
               <caret column="39" selection-start-column="39" selection-end-column="39" />
+=======
+            <state relative-caret-position="242">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#Square#0" />
+                <element signature="n#Board#0" />
+                <element signature="n#!!block;n#constructor#0;n#Board#0" />
+                <element signature="n#!!block;n#startGame#0;n#Game#0" />
+                <element signature="n#!!block;n#moveSnake#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#setDirection#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#shiftSnake#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#invalidMove#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#disallowReverse#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#gameOver#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#getNextMoveFromDirection#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#moveFood#0;n#Game#0" />
+                <element signature="n#!!block;n#updateBoard#0;n#Game#0" />
+                <element signature="n#!!block;n#updateSnakePosition#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#updateHighScore#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkIfAteFood#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkInBoard#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#checkNoOverlap#0;n#JoelGame#0" />
+                <element signature="n#!!block;n#render#0;n#Game#0" />
+              </folding>
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
             </state>
           </provider>
         </entry>
@@ -138,10 +173,16 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="3192" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1176" />
+=======
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1167" />
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -271,8 +312,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532103293399</updated>
+<<<<<<< HEAD
       <workItem from="1532103298104" duration="28665000" />
       <workItem from="1532424141535" duration="154000" />
+=======
+      <workItem from="1532103298104" duration="31642000" />
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
     </task>
     <task id="LOCAL-00001" summary="[Countries Quiz] Refactor">
       <created>1532421282011</created>
@@ -285,7 +330,41 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="30589000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="31642000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50104386" side_tool="true" weight="0.32889733" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49895614" visible="true" weight="0.32610744" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.094791666" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+=======
+    <option name="totallyTimeSpent" value="30435000" />
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
   </component>
   <component name="ToolWindowManager">
     <frame x="3192" y="-8" width="1936" height="1176" extended-state="6" />
@@ -303,7 +382,13 @@
       <window_info anchor="bottom" id="Find" order="5" weight="0.32987747" />
       <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.32917467" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+=======
+      <window_info id="Favorites" order="1" side_tool="true" />
+>>>>>>> 5fd165d0d1f4fbe6a84fc2ac79619a74c5341922
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32987747" />
@@ -344,6 +429,14 @@
     <MESSAGE value="[Countries Quiz] Refactor" />
     <option name="LAST_COMMIT_MESSAGE" value="[Countries Quiz] Refactor" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -412,8 +505,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snekboard.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="340">
           <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+=======
+        <state relative-caret-position="242">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#Square#0" />
+            <element signature="n#Board#0" />
+            <element signature="n#!!block;n#constructor#0;n#Board#0" />
+            <element signature="n#!!block;n#startGame#0;n#Game#0" />
+            <element signature="n#!!block;n#moveSnake#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#setDirection#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#shiftSnake#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#invalidMove#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#disallowReverse#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#gameOver#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#getNextMoveFromDirection#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#moveFood#0;n#Game#0" />
+            <element signature="n#!!block;n#updateBoard#0;n#Game#0" />
+            <element signature="n#!!block;n#updateSnakePosition#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#updateHighScore#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkIfAteFood#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkInBoard#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#checkNoOverlap#0;n#JoelGame#0" />
+            <element signature="n#!!block;n#render#0;n#Game#0" />
+          </folding>
+>>>>>>> adc23f2c393c6b02583f265de69eb9358ae6b5bb
         </state>
       </provider>
     </entry>
