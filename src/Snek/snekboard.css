@@ -3,6 +3,10 @@ body {
     margin: 20px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 ol, ul {
     padding-left: 30px;
 }
@@ -23,13 +27,13 @@ ol, ul {
     float: left;
     font-size: 24px;
     font-weight: bold;
-    line-height: 20px;
-    height: 20px;
+    line-height: 30px;
+    height: 30px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 20px;
+    width: 30px;
 }
 
 button[value="O"]{
