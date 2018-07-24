@@ -58,7 +58,7 @@ class App extends React.Component {
             x - distance * this.multiplier
         ));
         if (this.ctx !== null) {
-            this.ctx.lineTo(newX, y);
+            this.ctx.lineTo(Math.round(newX), y);
             this.ctx.stroke();
 
             this.setState({
