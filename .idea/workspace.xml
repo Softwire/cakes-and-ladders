@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0549126b-a7c3-4d0b-8ac7-a60bfadadc99" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +17,8 @@
       <file leaf-file-name="QuizInterface.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="71" column="31" lean-forward="true" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
+            <state relative-caret-position="68">
+              <caret line="4" column="73" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="73" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -28,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Timer.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Timer.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/countries-quiz/Timer.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+            <state relative-caret-position="476">
+              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -66,17 +64,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CountriesQuiz.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CountriesQuiz.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1207">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#loadNewQuestion#0;n#CountriesQuiz#0" />
                 <element signature="e#1374#1560#0" />
                 <element signature="n#!!block;n#getNewLevelScore#0;n#CountriesQuiz#0" />
                 <element signature="n#!!block;n#updateButtonState#0;n#CountriesQuiz#0" />
-                <element signature="n#!!block;n#showContinueButton#0;n#CountriesQuiz#0" />
+                <element signature="n#!!block;n#endGame#0;n#CountriesQuiz#0" />
                 <element signature="n#!!block;n#getNRandomCountries#0;n#CountriesQuiz#0" />
                 <element signature="e#2563#2806#0" />
                 <element signature="e#2697#2796#0" />
@@ -122,9 +121,9 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/countries-quiz/css/countries-quiz.css" />
         <option value="$PROJECT_DIR$/src/countries-quiz/OptionButton.jsx" />
+        <option value="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" />
         <option value="$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx" />
         <option value="$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx" />
-        <option value="$PROJECT_DIR$/src/countries-quiz/Timer.jsx" />
       </list>
     </option>
   </component>
@@ -354,11 +353,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532429486500</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[Countries Quiz] Add timer reset">
+      <created>1532430990275</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1532430990275</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39169000" />
+    <option name="totallyTimeSpent" value="39779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1909" y="-1208" width="1936" height="1176" extended-state="6" />
@@ -392,7 +398,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Rename title" />
     <MESSAGE value="Reorganise" />
     <MESSAGE value="Show map" />
     <MESSAGE value="Refactor" />
@@ -417,11 +422,12 @@
     <MESSAGE value="[Countries Quiz] Add progress bar" />
     <MESSAGE value="[Countries Quiz] Add ready button" />
     <MESSAGE value="[Countries Quiz] Refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Countries Quiz] Refactor" />
+    <MESSAGE value="[Countries Quiz] Add timer reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Countries Quiz] Add timer reset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -695,10 +701,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/countries-quiz/Timer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/countries-quiz/QuizInterface.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="71" column="31" lean-forward="true" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="4" column="73" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="73" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -707,26 +720,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/countries-quiz/CountriesQuiz.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1207">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="357">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#loadNewQuestion#0;n#CountriesQuiz#0" />
             <element signature="e#1374#1560#0" />
             <element signature="n#!!block;n#getNewLevelScore#0;n#CountriesQuiz#0" />
             <element signature="n#!!block;n#updateButtonState#0;n#CountriesQuiz#0" />
-            <element signature="n#!!block;n#showContinueButton#0;n#CountriesQuiz#0" />
+            <element signature="n#!!block;n#endGame#0;n#CountriesQuiz#0" />
             <element signature="n#!!block;n#getNRandomCountries#0;n#CountriesQuiz#0" />
             <element signature="e#2563#2806#0" />
             <element signature="e#2697#2796#0" />
             <element signature="n#!!block;n#getRandomFrom#0;n#CountriesQuiz#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/countries-quiz/Timer.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
         </state>
       </provider>
     </entry>

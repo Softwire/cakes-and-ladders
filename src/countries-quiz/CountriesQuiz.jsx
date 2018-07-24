@@ -20,6 +20,7 @@ class CountriesQuiz extends Component {
             isLoadingNewQuestion: false,
             levelScore: 0,
             gameState: gameState.NOT_STARTED,
+            level: 1,
         };
 
         this.selectOption = this.selectOption.bind(this);
@@ -41,7 +42,7 @@ class CountriesQuiz extends Component {
     render() {
 
         if (this.state.answerIndex === -1) return (<p className="m-5">Loading...</p>);
-        let progress = (this.state.levelScore / questionsPerLevel * 100) + "%";
+        let progress = (this.state.levelScore / this.getQuestionsNumberRequired() * 100) + "%";
 
         return (
             <QuizInterface
@@ -53,6 +54,7 @@ class CountriesQuiz extends Component {
                 progress={progress}
                 onContinueButtonClick={this.onContinueButtonClick}
                 gameState={this.state.gameState}
+                level={this.state.level}
             />
         );
     }
@@ -82,7 +84,7 @@ class CountriesQuiz extends Component {
         let answerOptions = this.getAnswerOptionsWithNewButtonStates(this.state.answerOptions, selectIndex, answerIndex);
 
         let levelScore = this.getNewLevelScore(selectIndex, answerIndex);
-        let currentGameState = levelScore >= questionsPerLevel ? gameState.CONTINUE : gameState.IN_PROGRESS;
+        let currentGameState = levelScore >= this.getQuestionsNumberRequired() ? gameState.CONTINUE : gameState.IN_PROGRESS;
 
         this.setState({
             answerOptions: answerOptions,
@@ -95,6 +97,10 @@ class CountriesQuiz extends Component {
             if (this.state.gameState === gameState.IN_PROGRESS)
                 this.loadNewQuestion();
         }, 2500);
+    }
+
+    getQuestionsNumberRequired() {
+        return this.state.level + 1;
     }
 
     getNewLevelScore(selectIndex, answerIndex) {
@@ -133,6 +139,7 @@ class CountriesQuiz extends Component {
                 this.loadNewQuestion();
                 this.setState({
                     gameState: gameState.IN_PROGRESS,
+                    level: 1,
                 });
                 break;
             case gameState.CONTINUE:
@@ -140,6 +147,7 @@ class CountriesQuiz extends Component {
                 this.setState({
                     gameState: gameState.IN_PROGRESS,
                     levelScore: 0,
+                    level: this.state.level + 1,
                 });
                 break;
         }

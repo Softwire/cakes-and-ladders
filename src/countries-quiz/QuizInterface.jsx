@@ -13,7 +13,7 @@ function Flag(props) {
 function Level(props) {
     return (
         <div className="col">
-            <h2 className="levels">1</h2>
+            <h2 className="levels">{props.value}</h2>
         </div>
     );
 }
@@ -33,11 +33,7 @@ class QuizInterface extends Component {
                     <div className="col">
                         <h2 className="levels">Level</h2>
                     </div>
-                    <Level/>
-                    <Level/>
-                    <Level/>
-                    <Level/>
-                    <Level/>
+                    <Level value={this.props.level}/>
                     <Timer
                         countDownFrom={this.props.timePerLevel}
                         endGame={this.props.endGame}
