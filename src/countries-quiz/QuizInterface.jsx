@@ -18,8 +18,8 @@ class QuizInterface extends Component {
                         <h1>Countries Quiz</h1>
                     </div>
                     <Timer
-                        countDownFrom={10}
-                        gameEnded={false}
+                        countDownFrom={this.props.timePerLevel}
+                        endGame={this.props.endGame}
                     />
                 </div>
                 <div className="row">

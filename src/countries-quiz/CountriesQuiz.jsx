@@ -3,6 +3,7 @@ import './css/countries-quiz.css';
 import QuizInterface from "./QuizInterface.jsx";
 
 const optionCount = 4;
+const timePerLevel = 5;
 const buttonState = {UNSELECTED: 0, CORRECT: 1, WRONG: 2, SELECTED: 3 };
 
 class CountriesQuiz extends Component {
@@ -17,6 +18,7 @@ class CountriesQuiz extends Component {
         };
 
         this.selectOption = this.selectOption.bind(this);
+        this.endGame = this.endGame.bind(this);
     }
 
     componentDidMount() {
@@ -39,6 +41,8 @@ class CountriesQuiz extends Component {
                 answerOptions={this.state.answerOptions}
                 answerIndex={this.state.answerIndex}
                 handleClick={this.selectOption}
+                timePerLevel={timePerLevel}
+                endGame={this.endGame}
             />
         );
     }
@@ -79,6 +83,10 @@ class CountriesQuiz extends Component {
         setTimeout(() => {
             this.loadNewQuestion();
         }, 2500);
+    }
+
+    endGame() {
+        alert("end");
     }
 
     getNRandomCountries(numberOfCountries) {

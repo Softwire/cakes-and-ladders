@@ -8,16 +8,16 @@ class Timer extends React.Component {
 
     timer() {
         this.setState({
-            currentCount: (this.state.currentCount - 0.01).toFixed(2)
+            currentCount: (this.state.currentCount - 0.1).toFixed(1)
         });
-        if (this.state.currentCount < 0.01) {
+        if (this.state.currentCount < 0.1) {
             clearInterval(this.intervalId);
-            this.props.gameEnded()
+            this.props.endGame();
         }
     }
 
     componentDidMount() {
-        this.intervalId = setInterval(this.timer.bind(this), 10);
+        this.intervalId = setInterval(this.timer.bind(this), 100);
     }
 
     componentWillUnmount() {
@@ -27,7 +27,7 @@ class Timer extends React.Component {
     render() {
         return (
             <div className="col">
-                Time remaining:{this.state.currentCount}
+                {this.state.currentCount}
             </div>
         );
     }
